@@ -1,6 +1,5 @@
 *.log
 
-/config
 /dist
 /.idea
 /node_modules
