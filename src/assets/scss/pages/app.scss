@@ -1,0 +1,140 @@
+#Nav{
+  background-color:#fff;
+  position: fixed;
+  top:0;
+  left: 0;
+  height: 100%;
+  box-sizing: border-box;
+  width:220px;
+  padding: 10px;
+  .NavList{
+    margin-top: 20px;
+  }
+  .headPortrait{
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:100px;
+    height:100px;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    background-image: url("../../imgs/pages/me.jpg");
+  }
+  .otherPlatform {
+   overflow: hidden;
+    height:36px;
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 0;
+  }
+  .otherPlatform ul{
+    display: inline-block;
+  }
+  .hiddenWarp{
+    height:(65rem / 75);
+    overflow: hidden;
+    transition:all 1s;
+  }
+  .dropWarp{
+    transition:all 1s;
+  }
+  .drop-down{
+    background: url("../../imgs/pages/drop-down.png") no-repeat;
+    width:(40rem / 75);
+    height:(40rem / 75);
+    background-size:cover;
+    margin: auto;
+    margin-bottom: (10rem /75);
+  }
+  .drop-up{
+    background: url("../../imgs/pages/drop-up.png") no-repeat;
+    width:(40rem / 75);
+    height:(40rem / 75);
+    background-size:cover;
+    margin: auto;
+    margin-bottom: (10rem /75);
+
+  }
+  .fiexWarp{
+    position: absolute;
+    left: 0;
+    width:100%;
+    background: #fff;
+  }
+}
+#body{
+  margin-left: 220px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+#copyRight{
+  position: fixed;
+  top: 450px;
+  text-align: center;
+  font-size: 13px;
+  color: #999;
+  border-top: 2px dashed #999999;
+  width:210px;
+  padding:15px;
+  box-sizing: border-box;
+}
+.yc-ui-float-cards{
+  .index2{
+    background-image: url('../../imgs/pages/toTop.png');
+  }
+  .index1{
+    background-image: url('../../imgs/pages/feedback.png');
+  }
+  .index0{
+    background-image: url('../../imgs/pages/search.png');
+  }
+
+}
+@for $i from 1 through 3 {
+  [data-dpr="#{$i}"]{
+    @media (max-width: 768px * $i) {
+      #Nav{
+        position: static;
+        width:100%;
+        .headPortrait{
+          height:(160rem/75);
+          width:(160rem/75);
+          margin-top: (30rem/75);
+        }
+        .NavList{
+          margin-top: 0;
+          li{
+            font-size:(35rem / 75);
+            line-height:(65rem / 75);
+          }
+        }
+        .otherPlatform{
+          height:(65rem/75);
+          li{
+            height: (65rem/75);
+            width: (65rem/75);
+          }
+        }
+      }
+      #copyRight{
+        position: static;
+        width:100%;
+        top: auto;
+        font-size: (26rem/75);
+        padding: (28rem/75);
+      }
+      #body{
+        margin: 0;
+        margin-top: (105rem / 75);
+        padding-right: 0;
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+

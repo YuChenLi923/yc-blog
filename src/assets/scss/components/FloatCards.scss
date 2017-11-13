@@ -1,0 +1,65 @@
+.yc-ui-float-cards{
+  position: fixed;
+  right:30px;
+  bottom:50px;
+  overflow: hidden;
+  .index0{
+    .text{
+      line-height: 40px;
+    }
+  }
+  li:hover{
+    .text{
+      transform: rotate(0deg);
+    }
+  }
+  li{
+    background: #bfbfbf;
+    text-align: center;
+    position: relative;
+    height: 50px;
+    width:50px;
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+    background-size: 30px 30px;
+    .text{
+      cursor: default;
+      color: white;
+      font-size: 14px;
+      width: 40px;
+      padding: 5px;
+      height: 40px;
+      line-height: 20px;
+      display: block;
+      position: relative;
+      transition:all 0.6s;
+      transform: rotate(180deg);
+      transform-origin: left top;
+      background: #333;
+    }
+  }
+}
+@for $i from 1 through 3 {
+  [data-dpr="#{$i}"] .yc-ui-float-cards{
+    @media (max-width: 768px * $i) {
+      li{
+        width:(90rem / 75);
+        height: (90rem / 75);
+        background-position: (15rem / 75);
+        background-size: (60rem / 75);
+      }
+      .text{
+        width:(70rem / 75);
+        height:(70rem / 75);
+        padding: (10rem / 75);
+        line-height: (40rem / 75);
+        font-size:(24rem / 75);
+      }
+      .index0{
+        .text{
+          line-height:(70rem / 75);
+        }
+      }
+    }
+  }
+}

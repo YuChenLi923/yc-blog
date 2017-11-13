@@ -1,0 +1,36 @@
+html,body,div,ul,li,a,hr,p,span,button,input,h1,h2{
+  margin: 0;
+  padding: 0;
+  border:none;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration:none;
+  color: black;
+  display: block;
+}
+[type = 'fe'] body,
+[type = 'admin'] body{
+  line-height: 1.42857143;
+  color:#333;
+  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f8f8f8;
+}
+.float-left{
+  float: left;
+}
+.float-right{
+  float: right;
+}
+.clear-float:after{
+  content: '';
+  display: block;
+  font-size: 0;
+  clear: both;
+}
+
+input {
+  display: block;
+}

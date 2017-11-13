@@ -1,0 +1,14 @@
+#yc-about-me {
+  position: absolute;
+  width: 300px;
+  left: 100%;
+  background: #fff;
+  box-shadow: 0 1px 10px 0 #d0d6e2;
+  font-size: 16px;
+  padding: 10px;
+  text-align: center;
+  .desc{
+    text-align: left;
+    font-size: 14px;
+  }
+}

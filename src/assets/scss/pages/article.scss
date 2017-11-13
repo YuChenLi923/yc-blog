@@ -1,0 +1,97 @@
+#article{
+  overflow: hidden;
+  .article-body{
+    background: #fff;
+    padding:  10px;
+    margin-top: 20px;
+  }
+  .article-content{
+    margin: auto;
+    font-size: 16px;
+  }
+  .article-base-info{
+    overflow: hidden;
+    padding-top: 10px;
+    .item{
+      font-size: 16px;
+      color: #999;
+    }
+  }
+  .article-to{
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    background: #fff;
+    width: 40%;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    overflow: hidden;
+    p:hover{
+      color: #337ab7;
+    }
+    p{
+      padding: 0;
+      margin:5px 30px;
+      word-break: keep-all;
+    }
+  }
+  .article-to-next{
+    background-position: calc(100% - 10px) 8px;
+    background-image: url('../../../assets/imgs/pages/next.png');
+    float: right;
+    border-left: 15px solid #fff;
+    p{
+      text-align: right;
+    }
+  }
+  .article-to-last{
+    background-position: 10px 8px;
+    background-image: url('../../../assets/imgs/pages/last.png');
+    float: left;
+    border-right: 15px solid #fff;
+  }
+  code{
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    color: #abb2bf;
+    background: #282c34;
+  }
+  p{
+    padding: 5px 0;
+    color: #333;
+  }
+}
+@for $i from 1 through 3 {
+  [data-dpr="#{$i}"] #article{
+    @media (max-width: 800px * $i) {
+      .article-content{
+        width: 100%;
+        font-size: (32rem / 75);
+      }
+      .article-to{
+        margin: 5px 5px;
+        width: 100%;
+        float: none;
+        font-size: (32rem / 75);
+        line-height:(32rem / 75);
+        background-position:(20rem / 75) (23rem / 75);
+        background-size: (32rem / 75) (32rem / 75);
+        p{
+          text-align: center;
+          overflow: hidden;
+          margin:(24rem / 75) (55rem / 75);
+        }
+      }
+      .article-to-next{
+        background-position: calc(100% - (20rem / 75)) (23rem / 75);
+      }
+      .article-base-info{
+        .item {
+          font-size: (32rem / 75);
+        }
+      }
+    }
+  }
+}

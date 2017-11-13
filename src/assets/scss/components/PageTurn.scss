@@ -1,0 +1,49 @@
+.yc-ui-pt{
+  text-align: center;
+  .container{
+    display: inline-block;
+    height:54px;
+    left:25%;
+    right:25%;
+    background: #ffffff;
+  }
+  a{
+    height: 100%;
+    width:100%;
+    font-size: 14px;
+  }
+  .btn{
+    float: left;
+    width: 54px;
+    height: 54px;
+  }
+  .last{
+    background: url("../../imgs/components/last.png") no-repeat 23px 21px;
+  }
+  .next{
+    background: url("../../imgs/components/next.png") no-repeat 18px 21px;
+  }
+  .warp {
+    background:white;
+    float: left;
+    li{
+      float: left;
+      line-height:40px;
+      height: 40px;
+      width: 40px;
+      font-size: 10px;
+      text-align: center;
+      margin-top: 7px;
+    }
+    li:hover{
+      opacity: 0.5;
+      cursor: pointer;
+    }
+    .cur a{
+      color: #337ab7;
+    }
+  }
+}
+
+
+

@@ -1,0 +1,50 @@
+.share{
+  .list{
+    .selected{
+      border: 2px solid #337ab7;
+      a{
+        color:#337ab7;
+      }
+    }
+    li{
+      background: #fff;
+      width:16.66666667%;
+      border: 2px solid #f8f8f8;
+      box-sizing: border-box;
+      a{
+        color: #333;
+      }
+    }
+  }
+}
+
+
+@for $i from 1 through 3 {
+  [data-dpr="#{$i}"] .share{
+    @media (max-width: 768px * $i) {
+        li{
+          width: 20%;
+          line-height: (80rem /75);
+          a{
+            font-size: (30rem / 75);
+          }
+        }
+        .articleCard{
+          padding: (20rem/75);
+          float: none;
+          width: auto;
+          height: (380rem / 75);
+          .title {
+            font-size: (44rem/75);
+          }
+          .desc {
+            font-size: (32rem/75);
+            height: (220rem / 75);
+          }
+          .subtitle{
+            font-size: (26rem / 75);
+          }
+        }
+    }
+  }
+}

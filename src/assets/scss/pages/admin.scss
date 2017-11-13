@@ -1,0 +1,43 @@
+#admin-nav{
+  background-color:#fff;
+  position: fixed;
+  top:0;
+  left: 0;
+  height: 100%;
+  box-sizing: border-box;
+  width:220px;
+  padding: 10px;
+  .admin-title{
+    font-size: 18px;
+    text-align: center;
+  }
+}
+#body{
+  margin-left: 220px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  .type-list{
+    width: 865px;
+    margin-left: -23px;
+    margin-top: 10px;
+    overflow: hidden;
+    li{
+      width: 100px;
+      height: 28px;
+      background: #fff;
+      margin-left: 23px;
+      line-height: 28px;
+      margin-top: 10px;
+      border: 1px solid #f8f8f8;
+    }
+    .selected{
+      color: #337ab7;
+      border: 1px solid #337ab7;
+    }
+  }
+  .admin-content-title{
+    font-size: 18px;
+  }
+}

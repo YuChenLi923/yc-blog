@@ -1,0 +1,34 @@
+.yc-ui-nav{
+  a{
+    height:100%;
+    width:100%;
+    display: block;
+    text-align: center;
+  }
+  li{
+    cursor: pointer;
+    line-height: 40px;
+    font-size: 16px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    a{
+      color: #999;
+    }
+  }
+  .selected a{
+    color:#337ab7;
+  }
+  .normal{ // 普通模式
+  }
+  .horizontal{ // 当导航组件为水平状态时候
+    overflow: hidden;
+    li{
+      float: left;
+    }
+  }
+  .github{
+    background-image: url("../../imgs/common/github.png");
+    width:36px;
+    height:36px;
+  }
+}

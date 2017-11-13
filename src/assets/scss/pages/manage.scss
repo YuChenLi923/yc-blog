@@ -1,0 +1,61 @@
+#yc-admin-manage{
+  width: 728px;
+  .article-list{
+    font-size: 16px;
+    background: #fff;
+    width: 728px;
+    margin-top: 20px;
+    color: #666;
+    font-size: 14px;
+    ul{
+      overflow: hidden;
+    }
+    li{
+      float: left;
+      box-sizing: border-box;
+      text-align: center;
+      height: 28px;
+      line-height: 28px;
+    }
+    .header{
+      font-weight: bold;
+      font-size: 16px;
+      .title{
+        border-right: 1px dashed #999;
+      }
+      .time{
+        border-right: 1px dashed #999;
+      }
+      .type {
+        border-right: 1px dashed #999;
+      }
+    }
+    .title{
+      width: 270px;
+    }
+    .time{
+      width: 120px;
+    }
+    .type {
+      width: 120px;
+    }
+    .opera{
+      width: 218px;
+      span{
+        color: #337ab7;
+        cursor: pointer;
+        margin-left: 15px;
+      }
+    }
+    .opera>:first-child{
+      margin-left: 0;
+    }
+    .item{
+      border-top: 1px dashed #999;
+    }
+  }
+  .page-turn{
+    width: 728px;
+    margin-top: 20px;
+  }
+}

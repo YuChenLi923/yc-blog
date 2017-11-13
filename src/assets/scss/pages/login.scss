@@ -1,0 +1,58 @@
+[type = 'login']  {
+  background: url("../../../assets/imgs/pages/login-bg.jpg") no-repeat;
+  background-size: cover;
+  min-width: 1120px;
+  height: 100%;
+}
+body{
+  height: 100%;
+}
+#login {
+  width: 400px;
+  margin: auto;
+  padding: 30px 40px 40px;
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  height: 330px;
+  margin-top: -205px;
+  margin-left:  -215px;
+   border-radius: 20px;
+  h2{
+    margin: 0 0 25px;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    color:#323a45;
+  }
+  input{
+    height: 48px;
+    width: 370px;
+    padding: 0 15px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 1px solid rgba(50,58,69,.2);
+    border-radius: 5px;
+    display: block;
+  }
+  input:focus{
+    outline: 0;
+    border-color: #499dd6;
+  }
+  button{
+    width: 400px;
+    height: 48px;
+    background: #323a45;
+    color: #fff;
+    font-size: 24px;
+    border-radius: 24px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity .2s ease;
+    outline: none;
+  }
+  .active{
+    opacity: 1;
+  }
+}
