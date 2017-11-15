@@ -3,6 +3,8 @@ import '../assets/scss/common/common.scss';
 import '../assets/scss/pages/app.scss';
 import AppNav from '../components/pages/App-Nav';
 import FloatCards from '../components/common/FloatCards';
+import {clickMenuSwitch} from '../redux/action/action';
+import warp from '../components/common/wrapCompontent';
 import config from '../../config/blog';
 let {
     leftNavList,
@@ -47,7 +49,7 @@ class App extends Component {
     }
     render() {
        let path = this.props.location.pathname,
-           { isMobile } = this.props,
+           { isMobile, clickMenuSwitch, open } = this.props,
            index = routerURL[path],
            NavProps = {
             myselfInfo,
@@ -56,21 +58,35 @@ class App extends Component {
             otherPlatform,
             index
           };
-       console.log(isMobile);
       return (
             <div className="container">
                 <AppNav {...NavProps}/>
-                <div id="body">
+                <div id="body"
+                     style={isMobile && open ? {
+                       marginLeft: (220 / 75) + 'rem',
+                       transition: '1s margin-left ease'
+                     } : (isMobile ? {
+                       transition: '1s margin-left ease'
+                     } : {}) }
+                     onClick={() => clickMenuSwitch(false)}
+                >
                     {this.props.children}
                 </div>
                 <FloatCards items={ floatCards }/>
-                <p id="copyRight">
-                    <span>{'COPYRIGHT   ' + myselfInfo.name}</span>
-                    <br/>
-                    <span> ALL RIGHTS RESERVED</span>
-                </p>
             </div>
         );
     }
 }
-module.exports = App;
+module.exports = warp({
+  Target: App,
+  redux: {
+    mapStateToProps: (state) => {
+      let { deviceChange, menuSwitch } = state;
+      return {
+        isMobile: deviceChange.isMobile,
+        open: menuSwitch.open
+      };
+    },
+    mapDispatchToProps: {clickMenuSwitch}
+  }
+});

@@ -1,16 +1,15 @@
 #Nav{
-  background-color:#fff;
+  background-color:#191970;
   position: fixed;
   top:0;
   left: 0;
   height: 100%;
-  box-sizing: border-box;
   width:220px;
   padding: 10px;
   .NavList{
     margin-top: 20px;
   }
-  .headPortrait{
+  .head-portrait{
     background-repeat: no-repeat;
     background-size: cover;
     width:100px;
@@ -20,6 +19,12 @@
     margin: auto;
     margin-top: 20px;
     background-image: url("../../imgs/pages/me.jpg");
+  }
+  .blog-title{
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+    margin-top: 10px;
   }
   .otherPlatform {
    overflow: hidden;
@@ -31,14 +36,6 @@
   }
   .otherPlatform ul{
     display: inline-block;
-  }
-  .hiddenWarp{
-    height:(65rem / 75);
-    overflow: hidden;
-    transition:all 1s;
-  }
-  .dropWarp{
-    transition:all 1s;
   }
   .drop-down{
     background: url("../../imgs/pages/drop-down.png") no-repeat;
@@ -55,13 +52,6 @@
     background-size:cover;
     margin: auto;
     margin-bottom: (10rem /75);
-
-  }
-  .fiexWarp{
-    position: absolute;
-    left: 0;
-    width:100%;
-    background: #fff;
   }
 }
 #body{
@@ -69,18 +59,18 @@
   padding-left: 40px;
   padding-right: 40px;
   padding-top: 20px;
-  padding-bottom: 30px;
+  max-width: 1380px;
+  background: #fff;
 }
 #copyRight{
-  position: fixed;
-  top: 450px;
+  width: 240px;
   text-align: center;
   font-size: 13px;
-  color: #999;
-  border-top: 2px dashed #999999;
-  width:210px;
+  border-top: 2px dashed #fff;
   padding:15px;
   box-sizing: border-box;
+  color: #fff;
+  margin-top: 20px;
 }
 .yc-ui-float-cards{
   .index2{
@@ -98,12 +88,71 @@
   [data-dpr="#{$i}"]{
     @media (max-width: 768px * $i) {
       #Nav{
-        position: static;
-        width:100%;
-        .headPortrait{
-          height:(160rem/75);
-          width:(160rem/75);
-          margin-top: (30rem/75);
+        position: fixed;
+        width: 100%;
+        height:(40rem/75);
+        transition: 1s margin ease;
+        .blog-title{
+          font-size: (23rem/75);
+          margin-top: 0;
+          transition: 1s margin-right ease;
+        }
+        .head-portrait{
+          height:(80rem/75);
+          width:(80rem/75);
+          margin: auto;
+          margin-top: (20rem/75);
+          margin-bottom: (20rem/75);
+        }
+        .menu{
+          position: fixed;
+          left: -(220rem/ 75);
+          width:(220rem/ 75);
+          top:0;
+          background: #191970;
+          transition: 1s all ease;
+          height: 100%;
+          .yc-ui-nav  a{
+            font-size: (16rem/ 75);
+          }
+        }
+        .menu-switch{
+          height:(20rem/75);
+          width: (30rem/75);
+          position: absolute;
+          left: (10rem/75);
+          margin-top: (5rem/75);
+        }
+        .menu-switch i{
+          top: 0;
+        }
+        .menu-switch i,
+        .menu-switch:after,
+        .menu-switch:before{
+          content: '';
+          width: 100%;
+          height: 1px;
+          position: absolute;
+          background-color: #999;
+          transform: rotate(0);
+          transition: all .2s cubic-bezier(.4,.01,.165,.99) .3s;
+        }
+        .menu-switch:after{
+          bottom: 0;
+        }
+        .menu-switch:before{
+          top: (10rem/75);
+        }
+        .menu-switch-close i{
+          top: (10rem/75);
+          transform: rotate(45deg);
+        }
+        .menu-switch-close:before{
+         opacity: 0;
+        }
+        .menu-switch-close:after{
+          bottom: (9rem/75);
+          transform: rotate(-45deg);
         }
         .NavList{
           margin-top: 0;
@@ -120,18 +169,25 @@
           }
         }
       }
+      .open-nav{
+        margin-left: (220rem/ 75);
+        .blog-title{
+          margin-right: (160rem/ 75);
+        }
+      }
       #copyRight{
-        position: static;
         width:100%;
         top: auto;
-        font-size: (26rem/75);
+        font-size: (12rem/75);
         padding: (28rem/75);
       }
       #body{
-        margin: 0;
-        margin-top: (105rem / 75);
+        width: 100%;
+        margin-left: 0;
+        margin-top: (40rem / 75);
         padding-right: 0;
         padding-left: 0;
+        max-width: auto;
       }
     }
   }

@@ -14,7 +14,9 @@ import {
     GET_SERVER_NO_DATA,
     GET_SERVER_MOBILE_DATA,
     GET_SERVER_MOBILE_NO_DATA,
-    GET_SERVER_MOBILE_ALL_DATA
+    GET_SERVER_MOBILE_ALL_DATA,
+    MENU_OPEN,
+    MENU_CLOSE
 } from '../type';
 import assign from '../../utils/yc-assign';
 import {isMobile} from '../../utils/yc-mobile';
@@ -104,8 +106,23 @@ function getServerData(state = {}, action = {}) {
     }
 }
 
+function menuSwitch(state = {open: false}, action) {
+  switch (action.type) {
+    case MENU_OPEN:
+      return assign({}, state, {
+        open: true
+      });
+    case MENU_CLOSE:
+      return assign({}, state, {
+        open: false
+      });
+    default:
+      return state;
+  }
+}
 module.exports = {
     scrollDS,
     deviceChange,
-    getServerData
+    getServerData,
+    menuSwitch
 };

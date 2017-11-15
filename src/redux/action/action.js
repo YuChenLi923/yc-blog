@@ -9,7 +9,9 @@ import {
   GET_SERVER_NO_DATA,
   GET_SERVER_MOBILE_NO_DATA,
   GET_SERVER_DATA,
-  GET_SERVER_MOBILE_ALL_DATA
+  GET_SERVER_MOBILE_ALL_DATA,
+  MENU_OPEN,
+  MENU_CLOSE
 } from '../type/index';
 const postSeverData = (ajaxConfig) => {
     return (dispatch) => {
@@ -90,7 +92,20 @@ const postSeverData = (ajaxConfig) => {
       }));
     };
 };
-
+const clickMenuSwitch = (open) => {
+  return (dispatch) => {
+    if (open) {
+      dispatch({
+        type: MENU_OPEN
+      });
+    } else {
+      dispatch({
+        type: MENU_CLOSE
+      });
+    }
+  };
+};
 module.exports = {
-    postSeverData
+    postSeverData,
+    clickMenuSwitch
 };

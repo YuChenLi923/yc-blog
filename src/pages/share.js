@@ -48,7 +48,7 @@ class Share extends Component {
         postSeverData({
             data: {
                 page: page,
-                num: 4,
+                num: 8,
                 type: type,
                 isMobile: isMobile
             },

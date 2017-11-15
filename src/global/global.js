@@ -29,14 +29,15 @@ module.exports = function (store) {
         }
     }
     // 全局检测距离页面顶部的距离,并分发事件
-    let windowScrollLisenerEvent = createRestrictor(function () {
+    const windowScrollLisenerEvent = createRestrictor(function () {
         let preTopDis = getScrollTopDis(),
             preBottomDis = getScrollBottomDis(),
             dropScrollTimes = 0;
         return function () {
             let curTopDis = getScrollTopDis(),
                 bottomDis = getScrollBottomDis();
-            if (bottomDis < 100 && preBottomDis >= 100 && isMobile()) {
+            console.log(bottomDis, preBottomDis, bottomDis < 100 && preBottomDis >= 100);
+            if (bottomDis < 50 && preBottomDis >= 50 && isMobile()) {
                 store.dispatch({
                     type: 'SCROLL_TO_DROP',
                     times: ++dropScrollTimes
@@ -55,6 +56,18 @@ module.exports = function (store) {
             preTopDis = curTopDis;
         };
     }, 4);
+
+    // 在移动端时监测导航关闭和开启
+    const menuOpenLisenerEvent = function (e) {
+      const target = e.target,
+          className = target.className;
+      console.log(className.indexOf('menu-switch-close') > -1, className, className === 'menu-switch', (className.indexOf('menu-switch-close') > -1) || className !== 'menu' || className === 'menu-switch');
+      if ((className.indexOf('menu-switch-close') > -1) || className !== 'menu' || className === 'menu-switch') {
+        store.dispatch({
+          type: 'MENU_CLOSE'
+        });
+      }
+    };
     // 去除热替换后之前的事件处理程序
     if (process.env.HOT_ENV && module.hot) {
         win.removeEventListener('load', globalLisenerEvent, false);

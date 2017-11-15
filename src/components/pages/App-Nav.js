@@ -1,19 +1,16 @@
 import React, {Component} from 'react';
 import warp from '../common/wrapCompontent';
 import Nav from '../common/Nav-router';
+import {clickMenuSwitch} from '../../redux/action/action';
 import AboutMe from '../../components/pages/aboutme';
+import {myselfInfo} from '../../../config/blog';
 class AppNav extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            drop: false,
+            showMenu: false,
             showAboutMe: false
         };
-    }
-    drop() {
-        this.setState({
-            drop: !this.state.drop
-        });
     }
     showAboutMe() {
       this.setState({
@@ -27,15 +24,22 @@ class AppNav extends Component {
     }
     render() {
         let {
-            isMobile = false,
+            isMobile = null,
             leftNavList,
             otherPlatform,
-            index
+            index,
+            open,
+            clickMenuSwitch,
+            getClassName
         } = this.props;
-        let { drop, showAboutMe } = this.state;
+        let { showAboutMe } = this.state;
         return (
-            <div id="Nav">
-                <div className="headPortrait"
+            <div id="Nav"
+                 className={getClassName({'open-nav': isMobile && open})}
+            >
+              {
+                isMobile === false &&
+                <div className="head-portrait"
                      onMouseEnter = {this.showAboutMe.bind(this)}
                      onMouseLeave = {this.closeAboutMe.bind(this)}
                 >
@@ -45,36 +49,36 @@ class AppNav extends Component {
                     }
                   }}
                 </div>
-                <div className={isMobile ? 'fiexWarp' : ''}>
-                    <div className={isMobile ? 'hiddenWarp' : ''}
-                         style={{height: drop ? (65 / 75 * leftNavList.length + 1.1) +
-                           'rem' : 65 / 75 + 'rem'}}
-                    >
-                        <div className="dropWarp"
-                             style={{
-                               marginTop: isMobile && !drop ? -1 * 65 / 75 * index +
-                                 'rem' : '0'}}
-                        >
-                            <Nav click={() => { this.setState({drop: false}); }}
+              }
+              {
+                isMobile &&
+                <div className={getClassName('menu-switch', {'menu-switch-close': open})}
+                     onClick={() => clickMenuSwitch(!open) }>
+                  <i/>
+                </div>
+              }
+               <p className='blog-title' onClick={() => clickMenuSwitch(false) }>{myselfInfo.name + '的博客'}</p>
+                <div className='menu' style={open && isMobile ? {left: 0} : {}}>
+                  {
+                    isMobile &&
+                    <div className="head-portrait" />
+                  }
+                  <Nav click={() => clickMenuSwitch(false) }
                                  items = {leftNavList}
                                  index={index}
                                  className="NavList"
                                  SPA
-                            />
-                            <Nav className='otherPlatform'
-                                 items = {otherPlatform}
-                                 horizontal
+                      />
+                      <Nav className='otherPlatform'
+                           items = {otherPlatform}
+                           horizontal
                                  disabled
-                            />
-                        </div>
-                    </div>
-                    {do{
-                      if (isMobile) {
-                        <div className={!drop ? 'drop-down' : 'drop-up'}
-                             onClick={this.drop.bind(this)}
-                        />;
-                      }
-                    }}
+                      />
+                      <p id="copyRight">
+                        <span>{'COPYRIGHT   ' + myselfInfo.name}</span>
+                        <br/>
+                        <span> ALL RIGHTS RESERVED</span>
+                      </p>
                 </div>
             </div>
         );
@@ -85,10 +89,12 @@ module.exports = warp({
     type: 'App-Nav',
     redux: {
         mapStateToProps: (state) => {
-            let { deviceChange } = state;
+            let { deviceChange, menuSwitch } = state;
             return {
-                isMobile: deviceChange.isMobile
+                isMobile: deviceChange.isMobile,
+                open: menuSwitch.open
             };
-        }
+        },
+        mapDispatchToProps: {clickMenuSwitch}
     }
 });

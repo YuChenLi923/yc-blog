@@ -3,7 +3,7 @@ module.exports = {
   serverHost: 'http://123.207.150.18:8081/',
   rootPath: '/',
   myselfInfo: {
-    name: '李宇宸'
+    name: '宇宸'
   },
   adminLeftNavList: [{
     value: '发布文章',
@@ -22,7 +22,7 @@ module.exports = {
     value: '主页',
     url:'/'
   },{
-    value: '技术分享',
+    value: '技术',
     url: '/share'
   },{
     value: '随笔',
@@ -33,5 +33,5 @@ module.exports = {
     url: 'https://github.com/YuChenLi923',
     target: '_blank'
   }],
-  shareType: ['js','css','H5','Node','算法']
+  shareType: ['JavaScript','CSS','HTML','Node','其他']
 }

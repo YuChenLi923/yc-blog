@@ -22,7 +22,7 @@ class Essay extends Component {
         postSeverData({
             data: {
               page: page,
-              num: 5,
+              num: 8,
               type: '随笔',
               isMobile
             },

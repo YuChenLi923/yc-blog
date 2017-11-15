@@ -8,15 +8,15 @@
   li{
     cursor: pointer;
     line-height: 40px;
-    font-size: 16px;
+    font-size: 18px;
     background-size: cover;
     background-repeat: no-repeat;
     a{
-      color: #999;
+      color: #fff;
     }
   }
   .selected a{
-    color:#337ab7;
+    background: #4876FF;
   }
   .normal{ // 普通模式
   }
