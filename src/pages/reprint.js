@@ -5,7 +5,7 @@ class Reprint extends Component {
   render() {
     return (
       <div>
-        转载页正在开发中....
+        订阅正在开发中....
       </div>
     );
   }

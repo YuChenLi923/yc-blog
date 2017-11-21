@@ -1,0 +1,50 @@
+#search{
+  .title{
+    font-size: 35px;
+    margin-top: 10px;
+  }
+  .search-input{
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    input{
+      width: calc(100% - 100px);
+      border: 1px solid #337ab7;
+      height: 100%;
+      line-height: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      float: left;
+      outline: none;
+    }
+    button{
+      width: 100px;
+      text-align: center;
+      background: #337ab7;
+      height: 100%;
+      display: block;
+      color: white;
+      font-size: 20px;
+    }
+  }
+}
+@for $i from 1 through 3 {
+  [data-dpr="#{$i}"] #search{
+    @media (max-width: 768px * $i) {
+      .title{
+        font-size: (35rem / 75);
+      }
+      .search-input{
+        height: (60rem / 75);
+        input{
+          width: calc(100% - (100rem / 75));
+          font-size: (24rem / 75);
+        }
+        button{
+          width: (100rem / 75);
+          font-size: (24rem / 75);
+        }
+      }
+    }
+  }
+}

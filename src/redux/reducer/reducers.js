@@ -16,7 +16,8 @@ import {
     GET_SERVER_MOBILE_NO_DATA,
     GET_SERVER_MOBILE_ALL_DATA,
     MENU_OPEN,
-    MENU_CLOSE
+    MENU_CLOSE,
+    CLEAN_SERVER_DATA
 } from '../type';
 import assign from '../../utils/yc-assign';
 import {isMobile} from '../../utils/yc-mobile';
@@ -101,6 +102,11 @@ function getServerData(state = {}, action = {}) {
                 remind: '宇宸的垃圾服务器太忙啦- -',
                 icon: 'timeout'
             });
+      case CLEAN_SERVER_DATA:
+        return assign({}, state, {
+          remind: '',
+          data: null
+        });
         default:
             return state;
     }

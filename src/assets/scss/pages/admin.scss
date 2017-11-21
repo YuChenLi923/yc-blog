@@ -1,5 +1,5 @@
 #admin-nav{
-  background-color:#fff;
+  background-color:#191970;
   position: fixed;
   top:0;
   left: 0;
@@ -10,6 +10,7 @@
   .admin-title{
     font-size: 18px;
     text-align: center;
+    color: #fff;
   }
 }
 #body{
@@ -18,6 +19,7 @@
   padding-right: 40px;
   padding-top: 20px;
   padding-bottom: 30px;
+  background: #f8f8f8;
   .type-list{
     width: 865px;
     margin-left: -23px;
@@ -35,6 +37,16 @@
     .selected{
       color: #337ab7;
       border: 1px solid #337ab7;
+    }
+  }
+  .yc-ui-nav{
+    a{
+      color: #333;
+    }
+    .selected {
+      a{
+        color: white;
+      }
     }
   }
   .admin-content-title{

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router';
 import warp from './wrapCompontent';
 import '../../assets/scss/components/FloatCards.scss';
 import {is, fromJS} from 'immutable';
@@ -23,17 +24,32 @@ class FloatCards extends Component {
             result = [];
         for (i = 0; i < len; i++) {
             if ((!items[i].withScroll && ((isMobile && items[i].isMobile) || !isMobile)) || (items[i].withScroll && isToSD)) {
-                result.push(
-                    <li className={'card ' + 'index' + i}
-                        key={i}
-                        onClick={this._click(items[i])}
-                    >
-                        {!items[i].noWarn && !isMobile &&
-                            <span className="text">{items[i].name}</span>
-                        }
+               if (items[i].url) {
+                 result.push(
+                   <Link key={i} to = {items[i].url}>
+                     <li className={'card ' + 'index' + i}
+                         onClick={this._click(items[i])}
+                     >
+                       {!items[i].noWarn && !isMobile &&
+                       <span className="text">{items[i].name}</span>
+                       }
 
-                    </li>
-                );
+                     </li>
+                   </Link>
+                 );
+               } else {
+                 result.push(
+                     <li className={'card ' + 'index' + i}
+                         key={i}
+                         onClick={this._click(items[i])}
+                     >
+                       {!items[i].noWarn && !isMobile &&
+                       <span className="text">{items[i].name}</span>
+                       }
+
+                     </li>
+                 );
+               }
             }
         }
         return result;

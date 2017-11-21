@@ -4,7 +4,7 @@ import PageTurn from '../components/common/PageTurn';
 import ArticleCard from '../components/pages/ArticleCard';
 import warp from '../components/common/wrapCompontent';
 import Loading from '../components/common/Loading';
-import {postSeverData} from '../redux/action/action';
+import {postSeverData, cleartGetData} from '../redux/action/action';
 import '../assets/scss/pages/eassy.scss';
 import { shareType } from '../../config/blog';
 let navItems = [];
@@ -50,6 +50,9 @@ class Essay extends Component {
     componentWillMount() {
         this.getAjaxData(this.state.index);
     }
+    componentWillUnmount() {
+      this.props.cleartGetData();
+    }
     render() {
         let { index } = this.state;
         let { data } = this.props;
@@ -71,7 +74,7 @@ class Essay extends Component {
 module.exports = warp({
     Target: Essay,
     redux: {
-        mapDispatchToProps: {postSeverData},
+        mapDispatchToProps: {postSeverData, cleartGetData},
         mapStateToProps: (state) => {
             let { getServerData, deviceChange, scrollDS } = state;
             return {

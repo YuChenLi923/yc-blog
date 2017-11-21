@@ -14,6 +14,7 @@ let {
     routerURL = {},
     floatCards = [{
         name: '搜索',
+        url: '/search',
         click: clickFloat,
         isMobile: true
     }, {
@@ -33,8 +34,6 @@ leftNavList.forEach(function (item, index) {
 routerURL['article'] = -1;
 function clickFloat(name) {
     switch (name) {
-        case '搜索':
-            break;
         case '返回顶部':
              window.scrollTo(0, 0);
              break;

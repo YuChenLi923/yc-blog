@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import CardWarper from '../components/common/CardWarper';
 import ArticleCard from '../components/pages/ArticleCard';
 import warp from '../components/common/wrapCompontent';
-import {postSeverData} from '../redux/action/action';
+import {postSeverData, cleartGetData} from '../redux/action/action';
 import Nav from '../components/common/Nav-router';
 import Loading from '../components/common/Loading';
 import '../assets/scss/pages/share.scss';
@@ -42,6 +42,9 @@ class Share extends Component {
     }
     componentWillMount() {
         this.getAjaxData(this.state.index, this.state.articleType);
+    }
+    componentWillUnmount() {
+        this.props.cleartGetData();
     }
     getAjaxData(page, type) {
         let { postSeverData, isMobile } = this.props;
@@ -94,7 +97,7 @@ class Share extends Component {
 module.exports = warp({
     Target: Share,
     redux: {
-        mapDispatchToProps: {postSeverData},
+        mapDispatchToProps: {postSeverData, cleartGetData},
         mapStateToProps: (state) => {
             let { getServerData, deviceChange, scrollDS } = state;
             return {

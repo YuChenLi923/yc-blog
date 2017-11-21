@@ -50,6 +50,10 @@ const Share = (location, callback) => {
   require.ensure([], require => {
     callback(null, require('../pages/resourceAdmin'));
   }, 'manage');
+}, Research = (location, callback) => {
+  require.ensure([], require => {
+    callback(null, require('../pages/search'));
+  }, 'manage');
 };
 const RouteConfig = (
     <Router history={browserHistory}>
@@ -61,6 +65,7 @@ const RouteConfig = (
             <Route path='history' getComponent={History}/>
             <Route path='resoure' getComponent={Resoure}/>
             <Route path='article' getComponent={Article}/>
+            <Route path='search' getComponent={Research}/>
         </Route>
         <Route path='login' getComponent={Login}/>
       <Route path='admin' getComponent={Admin}>

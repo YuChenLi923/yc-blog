@@ -11,7 +11,8 @@ import {
   GET_SERVER_DATA,
   GET_SERVER_MOBILE_ALL_DATA,
   MENU_OPEN,
-  MENU_CLOSE
+  MENU_CLOSE,
+  CLEAN_SERVER_DATA
 } from '../type/index';
 const postSeverData = (ajaxConfig) => {
     return (dispatch) => {
@@ -92,6 +93,13 @@ const postSeverData = (ajaxConfig) => {
       }));
     };
 };
+const cleartGetData = () => {
+  return (dispatch) => {
+    dispatch({
+      type: CLEAN_SERVER_DATA
+    });
+  };
+};
 const clickMenuSwitch = (open) => {
   return (dispatch) => {
     if (open) {
@@ -107,5 +115,6 @@ const clickMenuSwitch = (open) => {
 };
 module.exports = {
     postSeverData,
-    clickMenuSwitch
+    clickMenuSwitch,
+    cleartGetData
 };

@@ -1,8 +1,8 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import warp from './wrapCompontent';
-class Container extends Component{
-    render(){
-        return(
+class Container extends Component {
+    render() {
+        return (
             <div className={'container'}>
                 {this.props.children}
             </div>
@@ -10,6 +10,6 @@ class Container extends Component{
     }
 }
 module.exports = warp({
-    Target:Container,
-    type:'container'
+    Target: Container,
+    type: 'container'
 });
