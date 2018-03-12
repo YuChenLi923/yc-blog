@@ -11,7 +11,6 @@ const baseConfig = {
 let ajaxStack = [],
     preHref = '';
 function ajaxManager(ajaxConfig) {
-  console.log(assign({}, baseConfig, ajaxConfig));
   let Ajax = ajax.init(assign({}, baseConfig, ajaxConfig)),
         href = window.location.href;
   if (preHref && href !== preHref) {

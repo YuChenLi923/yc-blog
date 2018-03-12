@@ -1,0 +1,9 @@
+@mixin moblie {
+  @for $i from 1 through 3{
+    @media (max-width: 768px * $i) {
+      [data-dpr="#{$i}"]  {
+        @content
+      }
+    }
+  }
+}

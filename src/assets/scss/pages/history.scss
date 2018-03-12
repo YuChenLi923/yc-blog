@@ -1,5 +1,5 @@
+@import "../common/mobile";
 .History{
-
   ul{
     background: #fff;
     .title{
@@ -8,7 +8,6 @@
       margin-top: 10px;
     }
     .list{
-
       font-size: 20px;
       margin-left: 50px;
       padding-left: 30px;
@@ -17,24 +16,21 @@
     }
   }
 }
-@for $i from 1 through 3 {
-  [data-dpr="#{$i}"] .History{
-    @media (max-width: 768px * $i) {
-
-      ul {
-        .title {
-          margin-left: (40rem / 75);
-          font-size: (50rem / 75);
-          margin-top: (20rem / 75);
-        }
-        .list{
-          font-size: (40rem / 75);
-          margin-left: (100rem / 75);
-          padding-left: (60rem / 75);
-          line-height: (56rem / 75);
-          background-size: (40rem /75);
-          background-position:0 (12rem / 75);
-        }
+@include moblie {
+  .History{
+    ul {
+      .title {
+        margin-left: (40rem / 75);
+        font-size: (50rem / 75);
+        margin-top: (20rem / 75);
+      }
+      .list{
+        font-size: (40rem / 75);
+        margin-left: (100rem / 75);
+        padding-left: (60rem / 75);
+        line-height: (56rem / 75);
+        background-size: (40rem /75);
+        background-position:0 (12rem / 75);
       }
     }
   }

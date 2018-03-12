@@ -1,3 +1,4 @@
+@import "../common/mobile";
 .share{
   .list{
     .selected{
@@ -19,17 +20,14 @@
   }
 }
 
-
-@for $i from 1 through 3 {
-  [data-dpr="#{$i}"] .share{
-    @media (max-width: 768px * $i) {
-        li{
-          width: 20%;
-          line-height: (80rem /75);
-          a{
-            font-size: (30rem / 75);
-          }
-        }
+@include moblie {
+  .share{
+    li{
+      width: 20%;
+      line-height: (80rem /75);
+      a{
+        font-size: (30rem / 75);
+      }
     }
   }
 }

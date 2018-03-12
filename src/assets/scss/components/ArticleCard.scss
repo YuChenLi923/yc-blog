@@ -1,3 +1,4 @@
+@import "../common/mobile";
 .articleCard{
   background: #fff;
   padding: 10px;
@@ -5,17 +6,15 @@
   box-sizing: border-box;
   cursor: pointer;
   border-bottom: 1px dashed #666;
-  .header{
-    height: 40px;
-  }
   .title{
     overflow: hidden;
     display: block;
     font-weight: bold;
     font-size: 22px;
     margin-top: 10px;
-    line-height: 40px;
+    line-height: 1.2;
     float: left;
+    word-break: break-all;
   }
   .subtitle{
     font-size: 14px;
@@ -44,11 +43,12 @@
     }
   }
   .desc{
-    margin-top: 16px;
     padding: 10px 0;
     font-size: 16px;
     white-space: pre-wrap;
     text-align: justify;
+    word-break: break-all;
+    text-indent: 2ch;
   }
   .type{
     color: #337ab7;
@@ -56,45 +56,39 @@
     font-size: 14px;
   }
 }
-@for $i from 1 through 3 {
-  [data-dpr="#{$i}"] .articleCard{
-    @media (max-width: 768px * $i) {
-      padding: (20rem/75);
-      float: none;
-      width: auto;
-      .header{
-        height: (40rem/75);
+@include moblie {
+  .articleCard{
+    padding: (20rem/75);
+    float: none;
+    width: auto;
+    .title {
+      font-size: (44rem/75);
+    }
+    .desc {
+      font-size: (32rem/75);
+    }
+    .subtitle{
+      height:(40rem/75);
+      width:  100%;
+      p{
+        font-size: (30rem / 75);
+        line-height: (40rem/75);
       }
-      .title {
-        font-size: (44rem/75);
-        line-height:(40rem/75);
+      .time{
+        background-size: (27rem/75) (27rem/75);
+        padding-left:  (35rem/75);
+        background-position: 0 (4.5rem/75);
+        float: left;
       }
-      .desc {
-        font-size: (32rem/75);
-      }
-      .subtitle{
-        height:(40rem/75);
-        width:  100%;
-        p{
-          font-size: (18rem / 75);
-          line-height: (40rem/75);
-        }
-        .time{
-          background-size: (16rem/75) (16rem/75);
-          padding-left:  (20rem/75);
-          background-position: 0 (11rem/75);
-          float: left;
-        }
-        .view{
+      .view{
         float: right;
-           background-size: (23rem/75) (23rem/75);
-          padding-left:  (26rem/75);
-          background-position: 0 (7rem/75);
-        }
+        background-size: (28rem/75) (28rem/75);
+        padding-left:  (34rem/75);
+        background-position: 0 (4rem/75);
       }
-      .type{
-        font-size: (24rem / 75);
-      }
+    }
+    .type{
+      font-size: (24rem / 75);
     }
   }
 }

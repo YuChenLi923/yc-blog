@@ -1,3 +1,4 @@
+@import "../common/mobile";
 .home{
   .cardTitle{
     color: #222;
@@ -10,7 +11,6 @@
   }
   .titleWarp{
     overflow: hidden;
-
   }
   .more{
     color: #222;
@@ -48,73 +48,48 @@
     float: left;
   }
 }
-@for $i from 1 through 3 {
-  [data-dpr="#{$i}"] .home{
-    .articleWarp{
-      @media (min-width:1400px * $i) {
-        max-height: 250px;
-      }
-      @media ( max-width:1400px * $i) and (min-width:1070px * $i){
-        max-height: 500px;
-      }
-      @media ( max-width: 1070px * $i) and (min-width:768px * $i){
-        max-height: 1000px;
-      }
-    }
+@include moblie {
+  .home{
     .articleCard{
-      @media (min-width:1400px * $i) {
-        width: 25%;
-        float: left;
+      padding: (20rem/75);
+      float: none;
+      width: auto;
+      height: (380rem / 75);
+      .title {
+        font-size: (44rem/75);
       }
-      @media ( max-width:1400px * $i) and (min-width:1070px * $i){
-        width: 50%;
-        float: left;
+      .desc {
+        font-size: (32rem/75);
+        height: (220rem / 75);
       }
-      @media ( max-width: 1070px * $i) and (min-width:768px * $i){
-        width: 100%;
-        float: left;
-      }
-      @media (max-width: 768px * $i) {
-        padding: (20rem/75);
-        float: none;
-        width: auto;
-        height: (380rem / 75);
-        .title {
-          font-size: (44rem/75);
-        }
-        .desc {
-          font-size: (32rem/75);
-          height: (220rem / 75);
-        }
-        .subtitle{
-          font-size: (26rem / 75);
-        }
+      .subtitle{
+        font-size: (26rem / 75);
       }
     }
-    @media (max-width: 768px * $i) {
-      .warp{
-        width: 100%;
-        float: none;
+  }
+  .home{
+    .warp{
+      width: 100%;
+      float: none;
+    }
+    .cardTitle{
+      font-size: (40rem/75);
+    }
+    .more{
+      font-size:  (40rem/75);
+    }
+    .titleWarp{
+      margin-top: (15rem / 75);
+      margin-bottom: (15rem / 75);
+    }
+    .listWarp{
+      height: (304rem / 75);
+      .list{
+        font-size: (36rem / 75);
+        cursor: pointer;
       }
-      .cardTitle{
-        font-size: (40rem/75);
-      }
-      .more{
-        font-size:  (40rem/75);
-      }
-      .titleWarp{
-        margin-top: (15rem / 75);
-        margin-bottom: (15rem / 75);
-      }
-      .listWarp{
-        height: (304rem / 75);
-        .list{
-          font-size: (36rem / 75);
-          cursor: pointer;
-        }
-        .time{
-          font-size: (36rem / 75);
-        }
+      .time{
+        font-size: (36rem / 75);
       }
     }
   }

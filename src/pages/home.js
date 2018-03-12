@@ -7,11 +7,11 @@ import Loading from '../components/common/Loading';
 import '../assets/scss/pages/home.scss';
 
 class Home extends Component {
-    componentWillMount() {
-        let { postSeverData } = this.props;
+  componentWillMount() {
+    let { postSeverData } = this.props;
         postSeverData({
-            data: {},
-            url: 'yc/getHomeArticleList'
+          data: {},
+          url: 'yc/getHomeArticleList'
         });
     }
     render() {

@@ -1,3 +1,4 @@
+@import "../common/mobile";
 #Nav{
   background-color:#191970;
   position: fixed;
@@ -83,114 +84,110 @@
   }
 
 }
-@for $i from 1 through 3 {
-  [data-dpr="#{$i}"]{
-    @media (max-width: 768px * $i) {
-      #Nav{
-        position: fixed;
-        width: 100%;
-        height:(80rem/75);
-        transition: 1s margin ease;
-        .blog-title{
-          line-height: (80rem/75);
-          font-size: (46rem/75);
-          margin-top: 0;
-          transition: 1s margin-right ease;
-        }
-        .head-portrait{
-          height:(80rem/75);
-          width:(80rem/75);
-          margin: auto;
-          margin-top: (20rem/75);
-          margin-bottom: (20rem/75);
-        }
-        .menu{
-          position: fixed;
-          left: -(220rem/ 75);
-          width:(220rem/ 75);
-          top:0;
-          background: #191970;
-          transition: 1s all ease;
-          height: 100%;
-          .yc-ui-nav  a{
-            font-size: (16rem/ 75);
-          }
-        }
-        .menu-switch{
-          height:(40rem/75);
-          width: (60rem/75);
-          position: absolute;
-          left: (20rem/75);
-          margin-top: (10rem/75);
-        }
-        .menu-switch i{
-          top: 0;
-        }
-        .menu-switch i,
-        .menu-switch:after,
-        .menu-switch:before{
-          content: '';
-          width: 100%;
-          height: 2px;
-          position: absolute;
-          background-color: #fff;
-          transform: rotate(0);
-          transition: all .2s cubic-bezier(.4,.01,.165,.99) .3s;
-        }
-        .menu-switch:after{
-          bottom: 0;
-        }
-        .menu-switch:before{
-          top: (20rem/75);
-        }
-        .menu-switch-close i{
-          top: (20rem/75);
-          transform: rotate(45deg);
-        }
-        .menu-switch-close:before{
-         opacity: 0;
-        }
-        .menu-switch-close:after{
-          bottom: (17.5rem/75);
-          transform: rotate(-45deg);
-        }
-        .NavList{
-          margin-top: 0;
-          li{
-            font-size:(35rem / 75);
-            line-height:(65rem / 75);
-          }
-        }
-        .otherPlatform{
-          height:(65rem/75);
-          li{
-            height: (65rem/75);
-            width: (65rem/75);
-          }
-        }
+@include moblie {
+  #Nav{
+    position: fixed;
+    width: 100%;
+    height:(80rem/75);
+    transition: 1s margin ease;
+    .blog-title{
+      line-height: (80rem/75);
+      font-size: (46rem/75);
+      margin-top: 0;
+      transition: 1s margin-right ease;
+    }
+    .head-portrait{
+      height:(120rem/75);
+      width:(120rem/75);
+      margin: auto;
+      margin-top: (30rem/75);
+      margin-bottom: (20rem/75);
+    }
+    .menu {
+      position: fixed;
+      left: -(280rem/ 75);
+      width: (280rem/ 75);
+      top: 0;
+      background: #191970;
+      transition: 1s all ease;
+      height: 100%;
+      .yc-ui-nav a {
+        font-size: (30rem/ 75);
+        margin-top: (10rem/ 75);
       }
-      .open-nav{
-        margin-left: (220rem/ 75);
-        .blog-title{
-          margin-right: (160rem/ 75);
-        }
+    }
+    .menu-switch{
+      height:(40rem/75);
+      width: (60rem/75);
+      position: absolute;
+      left: (20rem/75);
+      margin-top: (20rem/75);
+    }
+    .menu-switch i{
+      top: 0;
+    }
+    .menu-switch i,
+    .menu-switch:after,
+    .menu-switch:before{
+      content: '';
+      width: 100%;
+      height: 2px;
+      position: absolute;
+      background-color: #fff;
+      transform: rotate(0);
+      transition: all .2s cubic-bezier(.4,.01,.165,.99) .3s;
+    }
+    .menu-switch:after{
+      bottom: 0;
+    }
+    .menu-switch:before{
+      top: (20rem/75);
+    }
+    .menu-switch-close i{
+      top: (20rem/75);
+      transform: rotate(45deg);
+    }
+    .menu-switch-close:before{
+      opacity: 0;
+    }
+    .menu-switch-close:after{
+      bottom: (17.3rem/75);
+      transform: rotate(-45deg);
+    }
+    .NavList{
+      margin-top: 0;
+      li{
+        font-size:(35rem / 75);
+        line-height:(65rem / 75);
       }
-      #copyRight{
-        width:100%;
-        top: auto;
-        font-size: (12rem/75);
-        padding: (28rem/75);
-      }
-      #body{
-        width: 100%;
-        box-sizing: border-box;
-        padding: 0.5rem;
-        margin-left: 0;
-        margin-top: (80rem / 75);
-        max-width: auto;
+    }
+    .otherPlatform{
+      height:(65rem/75);
+      li{
+        height: (65rem/75);
+        width: (65rem/75);
       }
     }
   }
+  .open-nav{
+    margin-left: (280rem/ 75);
+    .blog-title{
+      margin-right: (190rem/ 75);
+    }
+  }
+  #copyRight{
+    width:100%;
+    top: auto;
+    font-size: (18rem/75);
+    padding: (28rem/75);
+  }
+  #body{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    margin-left: 0;
+    margin-top: (80rem / 75);
+    max-width: auto;
+  }
 }
-
 

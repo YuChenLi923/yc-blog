@@ -1,3 +1,4 @@
+@import "../common/mobile";
 #article{
   overflow: hidden;
   .article-body{
@@ -63,35 +64,45 @@
     color: #333;
   }
 }
-@for $i from 1 through 3 {
-  [data-dpr="#{$i}"] #article{
-    @media (max-width: 800px * $i) {
-      .article-content{
-        width: 100%;
+@include moblie {
+  #article{
+    .article-content{
+      width: 100%;
+      font-size: (32rem / 75);
+    }
+    .article-to{
+      margin: 5px 5px;
+      width: 100%;
+      float: none;
+      font-size: (32rem / 75);
+      line-height:(32rem / 75);
+      background-position:(20rem / 75) (23rem / 75);
+      background-size: (32rem / 75) (32rem / 75);
+      border-bottom: 1px solid #999;
+      p{
+        text-align: center;
+        overflow: hidden;
+        margin:(24rem / 75) (55rem / 75);
+      }
+    }
+    .article-to-next{
+      background-position: calc(100% - (20rem / 75)) (23rem / 75);
+    }
+    .article-to-last{
+      p{
+      }
+    }
+    //.article-to-last{
+    //  p{
+    //    padding-left:(32rem / 75);
+    //    text-align: center;
+    //    overflow: hidden;
+    //    margin:(24rem / 75) (55rem / 75);
+    //  }
+    //}
+    .article-base-info{
+      .item {
         font-size: (32rem / 75);
-      }
-      .article-to{
-        margin: 5px 5px;
-        width: 100%;
-        float: none;
-        font-size: (32rem / 75);
-        line-height:(32rem / 75);
-        background-position:(20rem / 75) (23rem / 75);
-        background-size: (32rem / 75) (32rem / 75);
-        border-bottom: 1px solid #999;
-        p{
-          text-align: center;
-          overflow: hidden;
-          margin:(24rem / 75) (55rem / 75);
-        }
-      }
-      .article-to-next{
-        background-position: calc(100% - (20rem / 75)) (23rem / 75);
-      }
-      .article-base-info{
-        .item {
-          font-size: (32rem / 75);
-        }
       }
     }
   }

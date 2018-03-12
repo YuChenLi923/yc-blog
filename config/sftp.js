@@ -1,6 +1,6 @@
 module.exports = {
-  host: 'xxxx',
+  host: 'xxxxxxx',
   user: 'xxx',
-  pass: 'xxxx',
-  remotePath: 'xxxx'
+  pass: 'xxx',
+  remotePath: 'xxxxx'
 };

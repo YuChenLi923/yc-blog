@@ -1,30 +1,29 @@
-@for $i from 1 through 3 {
-  [data-dpr="#{$i}"] .eassy{
-    @media (max-width: 768px * $i) {
-      .loading{
-        .icon{
-          height: (32rem / 75);
-          width: (32rem / 75);
-        }
-        p{
-          font-size: (24rem / 75);
-        }
+@import "../common/mobile";
+@include moblie {
+  .eassy{
+    .loading{
+      .icon{
+        height: (32rem / 75);
+        width: (32rem / 75);
       }
-      .articleCard{
-        padding: (20rem/75);
-        float: none;
-        width: auto;
-        height: (380rem / 75);
-        .title {
-          font-size: (44rem/75);
-        }
-        .desc {
-          font-size: (32rem/75);
-          height: (220rem / 75);
-        }
-        .subtitle{
-          font-size: (26rem / 75);
-        }
+      p{
+        font-size: (24rem / 75);
+      }
+    }
+    .articleCard{
+      padding: (20rem/75);
+      float: none;
+      width: auto;
+      height: (380rem / 75);
+      .title {
+        font-size: (44rem/75);
+      }
+      .desc {
+        font-size: (32rem/75);
+        height: (220rem / 75);
+      }
+      .subtitle{
+        font-size: (26rem / 75);
       }
     }
   }

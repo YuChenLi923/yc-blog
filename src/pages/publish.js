@@ -10,6 +10,7 @@ class Publish extends Component {
     super(props);
     this.state = {
       fileName: '',
+      oldArticle: '',
       articleTitle: '',
       articleDesc: '',
       articleType: articleTypes[0],
@@ -36,6 +37,7 @@ class Publish extends Component {
                 articleTitle: data.title,
                 articleDesc: data.desc,
                 articleType: data.type,
+                oldArticle: data.article,
                 recommend: data.recommend === 1 ? '是' : '否'
               });
             } else {
@@ -71,7 +73,7 @@ class Publish extends Component {
   }
   publish() {
     const { postSeverData } = this.props,
-          { articleTitle, articleDesc, fileName, articleType, recommend, edit } = this.state,
+          { oldArticle, articleTitle, articleDesc, fileName, articleType, recommend, edit } = this.state,
           files = this.fileDom.files,
           publishTime = new Date(),
           y = publishTime.getFullYear(),
@@ -98,7 +100,8 @@ class Publish extends Component {
           desc: articleDesc,
           recommend,
           file: files,
-          id: this.props.location.query.id
+          id: this.props.location.query.id,
+          oldMd: oldArticle
         },
         onSuccess: (result) => {
           console.log(result);

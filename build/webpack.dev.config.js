@@ -23,7 +23,7 @@ module.exports = merge(webpackBaseConfig, {
             template:'./src/views/template1.html',    //html模板路径
             inject:true,    //允许插件修改哪些内容，包括head与body
             hash:true,    //为静态资源生成hash值
-            chunks:['vender','js/pages/index','webpack']
+            chunks:['js/pages/index', 'webpack']
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),

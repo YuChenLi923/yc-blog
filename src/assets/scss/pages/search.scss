@@ -1,3 +1,4 @@
+@import '../common/mobile';
 #search{
   .title{
     font-size: 35px;
@@ -28,23 +29,23 @@
     }
   }
 }
-@for $i from 1 through 3 {
-  [data-dpr="#{$i}"] #search{
-    @media (max-width: 768px * $i) {
-      .title{
-        font-size: (35rem / 75);
+
+@include moblie {
+  #search {
+    .title{
+      font-size: (35rem / 75);
+    }
+    .search-input{
+      height: (60rem / 75);
+      input{
+        width: calc(100% - (100rem / 75));
+        font-size: (24rem / 75);
       }
-      .search-input{
-        height: (60rem / 75);
-        input{
-          width: calc(100% - (100rem / 75));
-          font-size: (24rem / 75);
-        }
-        button{
-          width: (100rem / 75);
-          font-size: (24rem / 75);
-        }
+      button{
+        width: (100rem / 75);
+        font-size: (24rem / 75);
       }
     }
   }
 }
+

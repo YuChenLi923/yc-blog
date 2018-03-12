@@ -1,6 +1,6 @@
 module.exports = {
   devHost: 'http://localhost:8081/',
-  serverHost: 'http://123.207.150.18:8081/',
+  serverHost: 'http://123.207.150.18/',
   rootPath: '/',
   myselfInfo: {
     name: '宇宸'

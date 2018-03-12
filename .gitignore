@@ -1,6 +1,6 @@
 *.log
+package-lock.json
 
 /dist
 /.idea
 /node_modules
-

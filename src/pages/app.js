@@ -61,12 +61,6 @@ class App extends Component {
             <div className="container">
                 <AppNav {...NavProps}/>
                 <div id="body"
-                     style={isMobile && open ? {
-                       marginLeft: (220 / 75) + 'rem',
-                       transition: '1s margin-left ease'
-                     } : (isMobile ? {
-                       transition: '1s margin-left ease'
-                     } : {}) }
                      onClick={() => clickMenuSwitch(false)}
                 >
                     {this.props.children}
