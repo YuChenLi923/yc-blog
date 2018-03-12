@@ -19,6 +19,7 @@ module.exports = {
         chunkFilename:"js/chunks/[name].[chunkhash:5].chunk.js"
     },
     plugins: [
+      new webpack.optimize.ModuleConcatenationPlugin(),
       new webpack.DllReferencePlugin({
         manifest: require('../dist/js/common/manifest.json')
       }),

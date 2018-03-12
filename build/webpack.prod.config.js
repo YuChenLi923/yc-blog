@@ -1,4 +1,5 @@
 const webpack = require('webpack'),
+      os = require('os'),
       { rootPath } = require('../config/path'),
       merge = require('webpack-merge'),
       HtmlWebpackPlugin = require('html-webpack-plugin'),
@@ -17,6 +18,7 @@ module.exports = merge(webpackBaseConfig, {
           minimize: true
       }),
      new webpack.optimize.UglifyJsPlugin({
+         workers: os.cpus().length,
          compress: {
              warnings: false,
              drop_debugger: true,
