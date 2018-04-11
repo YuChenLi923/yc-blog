@@ -3,7 +3,7 @@
     ["env"],
     ["react"],
     ["stage-0"],
-    ["es2015"] 
+    ["es2015"]
   ],
   "plugins": [
     "add-module-exports"

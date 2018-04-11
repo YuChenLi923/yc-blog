@@ -6,7 +6,7 @@ class ArticleList extends Component {
     const {postSeverData} = this.props,
           parent = this.props.parent;
     postSeverData({
-      url: 'yc/admin/delete',
+      url: 'yc/admin/deleteArticle',
       data: {
         id: this.props.id
       },

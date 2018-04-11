@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import warp from '../components/common/wrapCompontent';
-import {postSeverData} from '../redux/action/action';
-import '../assets/scss/pages/login.scss';
+import warp from '../../components/common/wrapCompontent';
+import {postSeverData} from '../../redux/action/action';
+import '../../assets/scss/pages/client/login.scss';
+import eAjax from '../../utils/yc-ajax';
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -17,20 +18,16 @@ class Login extends Component {
   login() {
     if (this.state.keyword && this.state.user) {
       const { user, keyword } = this.state;
-      this.props.postSeverData({
-        url: 'yc/login',
-        data: {
-          user,
-          keyword
-        },
-        onSuccess: (result, header) => {
-          if (result.status === 100) {
-            alert('登录成功!');
-            global.storage.setItem('Authorization', header.authorization);
-            window.location.href = './admin';
-          } else {
-            alert(result.msg);
-          }
+      eAjax.post('yc/login').send({
+        user,
+        keyword
+      }).then(({data: result, header}) => {
+        if (result.status === 100) {
+          alert('登录成功!');
+          global.storage.setItem('Authorization', header.authorization);
+          window.location.href = './admin';
+        } else {
+          alert(result.msg);
         }
       });
     }
@@ -53,14 +50,5 @@ class Login extends Component {
 }
 
 module.exports = warp({
-  Target: Login,
-  redux: {
-    mapDispatchToProps: {postSeverData},
-    mapStateToProps: (state) => {
-      let {getServerData} = state;
-      return {
-        data: getServerData.data
-      };
-    }
-  }
+  Target: Login
 });

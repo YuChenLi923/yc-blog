@@ -1,18 +1,31 @@
-import ajax from '../libs/ajaxExpand';
-import assign from '../utils/yc-assign';
+import eAjax from 'extend-ajax';
+import {devHost, serverHost} from '../../config/blog';
 const baseConfig = {
-  type: 'post',
   async: true,
-  contentType: 'json',
-  charset: 'utf-8',
+  header: {
+    'Content-Type': 'application/json',
+    'Accept': 'json'
+  },
   timeOut: 10000,
-  dataType: 'json'
+  convert: function (result) {
+    try {
+      return JSON.parse(result);
+    } catch (e) {
+      return result;
+    }
+  },
+  host: serverHost
 };
+eAjax.config(baseConfig);
 let ajaxStack = [],
     preHref = '';
-function ajaxManager(ajaxConfig) {
-  let Ajax = ajax.init(assign({}, baseConfig, ajaxConfig)),
-        href = window.location.href;
+function ajax(url, method, config) {
+  if (!config.header) {
+    config.header = {};
+  }
+  config.header.Authorization = encodeURIComponent(localStorage.getItem('Authorization')) || 'Bearer  ';
+  let href = window.location.href,
+      Ajax = eAjax(url, method, config);
   if (preHref && href !== preHref) {
     ajaxStack.forEach((item) => {
       item.stop();
@@ -23,10 +36,17 @@ function ajaxManager(ajaxConfig) {
   }
   preHref = href;
   Ajax.index = ajaxStack.length - 1;
-  Ajax.onEnd = function () {
+  Ajax.on('end', () => {
     ajaxStack.splice(Ajax.index, 1);
-  };
-  Ajax.send();
+  });
+  return Ajax;
 }
 
-export default ajaxManager;
+export default {
+  get: function (url, config = {}) {
+    return ajax(url, 'get', config);
+  },
+  post: function (url, config = {}) {
+    return ajax(url, 'post', config);
+  }
+};

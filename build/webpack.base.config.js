@@ -1,4 +1,5 @@
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin'),
+      path = require('path'),
       HappyPack = require('happypack'),
       os = require('os'),
       happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length}),
@@ -25,11 +26,12 @@ module.exports = {
       }),
       new AddAssetHtmlPlugin({
         filepath: require.resolve('../dist/js/common/lib.js'),
+        outputPath: '../dist/js/common',
+        publicPath: 'js/common',
         includeSourcemap: false
       }),
       new HappyPack({
         id: 'js',
-        cache: true,
         threadPool: happyThreadPool,
         loaders: ['babel-loader', 'json-loader']
       }),

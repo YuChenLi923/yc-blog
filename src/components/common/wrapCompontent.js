@@ -29,7 +29,6 @@ function warpComponent({Target, type, redux}) { //
         type: type,
         getClassName: classnames
     };
-    console.log(redux);
     return redux ? connect(redux.mapStateToProps || null, redux.mapDispatchToProps || null)(WarpComponent) : WarpComponent;
 }
 module.exports = warpComponent;

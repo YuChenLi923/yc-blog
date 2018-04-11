@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import warp from '../components/common/wrapCompontent';
-import {postSeverData} from '../redux/action/action';
-import Nav from '../components/common/Nav';
-import '../assets/scss/pages/publish.scss';
-import {shareType} from '../../config/blog';
-let articleTypes = [...shareType, '随笔'];
+import warp from '../../components/common/wrapCompontent';
+import Nav from '../../components/common/Nav';
+import '../../assets/scss/pages/admin/publish.scss';
+import ajax from '../../utils/yc-ajax';
 class Publish extends Component {
   constructor(props) {
     super(props);
@@ -13,36 +11,39 @@ class Publish extends Component {
       oldArticle: '',
       articleTitle: '',
       articleDesc: '',
-      articleType: articleTypes[0],
+      articleType: '',
       recommended: '否',
-      edit: this.props.location.pathname === '/admin/edit'
+      edit: this.props.location.pathname === '/admin/edit',
+      articleTypes: []
     };
   }
   componentWillMount() {
+    ajax.get('yc/getArticleTypes').send().then(({data: result}) => {
+      if (result.status === 100) {
+        let {data: {types: articleTypes}} = result;
+        this.setState({
+          articleTypes,
+          articleType: articleTypes[0]
+        });
+      }
+    });
     if (this.state.edit) {
       const id = +this.props.location.query.id;
       if (id) {
-        const { postSeverData } = this.props;
-        postSeverData({
-          url: 'yc/admin/getArticleInf',
-          hasToken: true,
-          noDispatch: true,
-          data: {
-            id
-          },
-          onSuccess: (result) => {
-            if (result.status === 100) {
-              const data = result.data;
-              this.setState({
-                articleTitle: data.title,
-                articleDesc: data.desc,
-                articleType: data.type,
-                oldArticle: data.article,
-                recommend: data.recommend === 1 ? '是' : '否'
-              });
-            } else {
-              // window.close();
-            }
+        ajax.post('yc/admin/getArticleInf').send({
+          id
+        }).then(({date: result}) => {
+          if (result.status === 100) {
+            const data = result.data;
+            this.setState({
+              articleTitle: data.title,
+              articleDesc: data.desc,
+              articleType: data.type,
+              oldArticle: data.article,
+              recommend: data.recommend === 1 ? '是' : '否'
+            });
+          } else {
+            window.close();
           }
         });
       } else {
@@ -57,7 +58,7 @@ class Publish extends Component {
         fileName: '',
         articleTitle: '',
         articleDesc: '',
-        articleType: articleTypes[0],
+        articleType: '',
         recommend: '否'
       });
     }
@@ -88,34 +89,31 @@ class Publish extends Component {
     } else if (!/\.md$/.test(fileName) && !edit) {
       alert('必须选择md文件');
     } else {
-      postSeverData({
-        url: edit ? 'yc/admin/update' : 'yc/admin/publish',
-        dataType: 'formData',
-        contentType: 'formData',
-        hasToken: true,
-        data: {
-          title: articleTitle,
-          type: articleType,
-          time: `${y}/${m}/${d}`,
-          desc: articleDesc,
-          recommend,
-          file: files,
-          id: this.props.location.query.id,
-          oldMd: oldArticle
-        },
-        onSuccess: (result) => {
-          console.log(result);
-          if (result.status === 100) {
-            alert('发布成功!');
-            window.location.reload();
-          }
+      ajax.post(edit ? 'yc/admin/update' : 'yc/admin/publish', {
+        header: {
+          'Content-Type': 'formData'
+        }
+      }).send({
+        title: articleTitle,
+        type: articleType,
+        time: `${y}/${m}/${d}`,
+        desc: articleDesc,
+        recommend,
+        file: files,
+        id: this.props.location.query.id,
+        oldMd: oldArticle
+      }).then(({data: result}) => {
+        if (result.status === 100) {
+          alert('发布成功!');
+          window.location.reload();
+        } else {
+          alert('发布失败!');
         }
       });
     }
   }
   render() {
-    const { fileName, edit, articleTitle, articleDesc, recommend, articleType } = this.state;
-    console.log(edit);
+    const { fileName, edit, articleTitle, articleDesc, recommend, articleTypes } = this.state;
     return (
       <div id="yc-admin-publish">
         <h2 className="admin-content-title">文章标题</h2>
@@ -132,7 +130,7 @@ class Publish extends Component {
         <h2 className="admin-content-title" id="type">文章类型</h2>
         <Nav className="type-list"
              horizontal
-             index= {articleTypes.indexOf(articleType)}
+             index= {0}
              items={articleTypes}
              click = {this.selectArticleType.bind(this)}
              SPA
@@ -173,14 +171,5 @@ class Publish extends Component {
   }
 }
 module.exports = warp({
-  Target: Publish,
-  redux: {
-    mapDispatchToProps: {postSeverData},
-    mapStateToProps: (state) => {
-      let {getServerData} = state;
-      return {
-        data: getServerData.data
-      };
-    }
-  }
+  Target: Publish
 });

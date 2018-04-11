@@ -3,7 +3,7 @@
 node + webpack + sass + react + react-router + redux 搭建SPA个人博客
 
 
-## 测试版本已经挂着我的服务器上了，更多功能将会在以后推出
+## 2.x测试版本已经挂着我的服务器上了，更多功能将会在以后推出
 
 [访问我的博客](http:www.yuchenblog.cn)
 

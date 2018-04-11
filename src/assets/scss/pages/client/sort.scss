@@ -1,0 +1,39 @@
+@import "../../common/mobile";
+#sort {
+    .yc-ui-nav{
+        margin-left: -15px;
+        margin-top: -15px;
+        li{
+            margin-left: 15px;
+            padding: 0 15px;
+            background: #fff;
+            margin-top: 15px;
+            a{
+                color: #333;
+                height: 40px;
+                line-height: 40px;
+            }
+            a:hover{
+                color: #ff6663;
+            }
+        }
+    }
+}
+@include moblie {
+    #sort{
+        .yc-ui-nav{
+            margin-top: (-30rem/75);
+            li{
+                margin-left: (30rem/75);
+                padding: 0 (30rem/75);
+                margin-top: (30rem/75);
+                a{
+                    color: #ff6663;
+                    font-size: (30rem / 75);
+                    height: (80rem/75);
+                    line-height: (80rem/75);
+                }
+            }
+        }
+    }
+}

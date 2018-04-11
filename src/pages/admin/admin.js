@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import warp from '../components/common/wrapCompontent';
-import {postSeverData} from '../redux/action/action';
-import { adminLeftNavList } from '../../config/blog';
-import Nav from '../components/pages/AppAdminNav';
-import '../assets/scss/pages/admin.scss';
+import warp from '../../components/common/wrapCompontent';
+import { adminLeftNavList } from '../../../config/blog';
+import Nav from '../../components/pages/AppAdminNav';
+import '../../assets/scss/pages/admin/admin.scss';
+import ajax from '../../utils/yc-ajax';
 const routerURL = {};
 adminLeftNavList.forEach(function (item, index) {
   routerURL[item.url] = index;
@@ -16,10 +16,8 @@ class Admin extends Component {
       alert('请登录');
       window.location.href = '/login';
     } else {
-      this.props.postSeverData({
-        url: 'yc/verifyUser',
-        hasToken: true,
-        noDispatch: true
+      ajax.post('yc/admin/verifyUser').send().then((result) => {
+        console.log(result);
       });
     }
   }
@@ -35,14 +33,5 @@ class Admin extends Component {
   };
 }
 module.exports = warp({
-  Target: Admin,
-  redux: {
-    mapDispatchToProps: { postSeverData },
-    mapStateToProps: (state) => {
-      let { getServerData } = state;
-      return {
-        data: getServerData.data
-      };
-    }
-  }
+  Target: Admin
 });

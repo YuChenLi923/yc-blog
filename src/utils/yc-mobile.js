@@ -7,7 +7,7 @@ let scale = 1,
 
 // 设置当前的rem
 function setCurRem() {
-    let width = docEl.getBoundingClientRect().width,
+    let width,
         devicePixelRatio = win.devicePixelRatio,
         rem;
     if (devicePixelRatio) {
@@ -21,15 +21,15 @@ function setCurRem() {
     } else {
         dpr = 1;
     }
-
+    scale = parseFloat((1 / dpr).toFixed(2));
+    docEl.setAttribute('data-dpr', dpr);
+    metaEl.setAttribute('content', 'width=device-width,initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+    width = docEl.getBoundingClientRect().width;
     if (width / dpr > 540) {
         width = 540 * dpr;
     }
     rem = width / 10;
     docEl.style.fontSize = rem + 'px';
-    scale = parseFloat((1 / dpr).toFixed(2));
-    docEl.setAttribute('data-dpr', dpr);
-    metaEl.setAttribute('content', 'width=device-width,initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
 };
 
 // 获取屏幕宽度

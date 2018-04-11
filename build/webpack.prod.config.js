@@ -13,7 +13,7 @@ function setCSS(getPath){
 }
 
 module.exports = merge(webpackBaseConfig, {
-    plugins: [
+  plugins: [
       new webpack.LoaderOptionsPlugin({ // 压缩css文件
           minimize: true
       }),
@@ -42,14 +42,11 @@ module.exports = merge(webpackBaseConfig, {
           template:'./src/views/template1.html',    //html模板路径
           inject:true,    //允许插件修改哪些内容，包括head与body
           hash:true,    //为静态资源生成hash值
-          chunks:['vender','js/pages/index','webpack'],
+          chunks:['js/pages/index'],
           minify:{    //压缩HTML文件
               removeComments:true,    //移除HTML中的注释
               collapseWhitespace:true    //删除空白符与换行符
           }
-      }),
-      new CleanWebpackPlugin(['./dist'], {
-        root: rootPath
       })
   ],
   module: {

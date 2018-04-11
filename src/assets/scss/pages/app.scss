@@ -1,14 +1,20 @@
 @import "../common/mobile";
 #Nav{
-  background-color:#191970;
-  position: fixed;
+  background-color:#0b3954;
   top:0;
   left: 0;
-  height: 100%;
-  width:220px;
-  padding: 10px;
-  .NavList{
-    margin-top: 20px;
+  overflow: hidden;
+  .menu-toggle{
+    display: none;
+  }
+  .yc-ui-nav{
+    li {
+      width: 86px;
+      height: 40px;
+    }
+  }
+  .nav-list{
+    margin-top: 60px;
   }
   .head-portrait{
     background-repeat: no-repeat;
@@ -23,9 +29,16 @@
   }
   .blog-title{
     color: #fff;
-    font-size: 22px;
-    text-align: center;
-    margin-top: 10px;
+    font-size: 32px;
+    padding: 10px;
+    margin-top: 60px;
+    margin-left: 10px;
+  }
+  .blog-sub-title{
+    font-size: 16px;
+    padding: 0 10px;
+    color: #fff;
+    margin-left: 10px;
   }
   .otherPlatform {
    overflow: hidden;
@@ -56,21 +69,59 @@
   }
 }
 #body{
-  margin-left: 220px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 20px;
-  max-width: 1380px;
-  background: #fff;
+  background: #F5F5F5;
+  overflow: hidden;
+  padding-top: 32px;
+  .content{
+    width: 63.88889%;
+    float: left;
+    margin: 0 1.38889%;
+    min-height: 400px;
+  }
 }
-#copyRight{
+#sub-nav{
+  width: 30.55556%;
+  float: right;
+  .card{
+    background: #fff;
+    padding: 30px;
+    margin-bottom: 32px;
+    .title{
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .title-more{
+      float: right;
+      color: #ff6663;
+      font-size: 18px;
+      margin-top: 5px;
+    }
+  }
+  .yc-ui-nav{
+    margin-top: 5px;
+    li {
+      padding: 0;
+      cursor: default;
+      line-height: 36px;
+    }
+    a{
+      text-align: left;
+      color: #ff6663;
+      font-size: 16px;
+      display: inline;
+    }
+    .selected{
+      background: inherit;
+    }
+  }
+}
+#copyright{
+  font-size: 16px;
+  height: 60px;
+  line-height: 60px;
+  background: #0b3954;
   text-align: center;
-  font-size: 13px;
-  border-top: 2px dashed #fff;
-  padding:15px;
-  box-sizing: border-box;
   color: #fff;
-  margin-top: 20px;
 }
 .yc-ui-float-cards{
   .index2{
@@ -86,73 +137,63 @@
 }
 @include moblie {
   #Nav{
-    position: fixed;
     width: 100%;
-    height:(80rem/75);
-    transition: 1s margin ease;
+    .menu-toggle{
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+      width: 1.5rem;
+      padding: 0.45rem 5px 0;
+      z-index: 5;
+      div{
+        background: #fff;
+        margin: 0.254rem .4rem 0.2rem 0;
+        transition: 0.15s ease-in-out;
+        height: 0.12rem;
+        transform-origin: left center;
+      }
+    }
+    .menu-toggle-open{
+      div:nth-child(1) {
+        transform: rotate(45deg);
+      }
+      div:nth-child(2) {
+       width: 0;
+       opacity: 0;
+      }
+      div:nth-child(3) {
+        transform: rotate(-45deg);
+      }
+    }
+    .nav-list{
+      margin-top: 0;
+    }
     .blog-title{
+      padding: 0.45rem 0.25rem;
       line-height: (80rem/75);
       font-size: (46rem/75);
       margin-top: 0;
-      transition: 1s margin-right ease;
     }
-    .head-portrait{
-      height:(120rem/75);
-      width:(120rem/75);
-      margin: auto;
-      margin-top: (30rem/75);
-      margin-bottom: (20rem/75);
+    .blog-sub-title{
+      font-size: (24rem/75);
+      padding-left: 0.25rem;
+      margin-bottom: (60rem / 75);
+      margin-top: 0;
+      display: inline-block;
     }
     .menu {
-      position: fixed;
-      left: -(280rem/ 75);
-      width: (280rem/ 75);
-      top: 0;
-      background: #191970;
-      transition: 1s all ease;
-      height: 100%;
-      .yc-ui-nav a {
-        font-size: (30rem/ 75);
-        margin-top: (10rem/ 75);
+      li{
+        width: 100%;
+        height: (80rem / 75);
+        line-height:  (80rem / 75);
+        padding-left: 0.25rem;
       }
-    }
-    .menu-switch{
-      height:(40rem/75);
-      width: (60rem/75);
-      position: absolute;
-      left: (20rem/75);
-      margin-top: (20rem/75);
-    }
-    .menu-switch i{
-      top: 0;
-    }
-    .menu-switch i,
-    .menu-switch:after,
-    .menu-switch:before{
-      content: '';
-      width: 100%;
-      height: 2px;
-      position: absolute;
-      background-color: #fff;
-      transform: rotate(0);
-      transition: all .2s cubic-bezier(.4,.01,.165,.99) .3s;
-    }
-    .menu-switch:after{
-      bottom: 0;
-    }
-    .menu-switch:before{
-      top: (20rem/75);
-    }
-    .menu-switch-close i{
-      top: (20rem/75);
-      transform: rotate(45deg);
-    }
-    .menu-switch-close:before{
-      opacity: 0;
-    }
-    .menu-switch-close:after{
-      bottom: (17.3rem/75);
-      transform: rotate(-45deg);
+      a{
+        font-size: (32rem/75);
+        text-align: left;
+      }
     }
     .NavList{
       margin-top: 0;
@@ -161,33 +202,32 @@
         line-height:(65rem / 75);
       }
     }
-    .otherPlatform{
-      height:(65rem/75);
-      li{
-        height: (65rem/75);
-        width: (65rem/75);
-      }
-    }
-  }
-  .open-nav{
-    margin-left: (280rem/ 75);
-    .blog-title{
-      margin-right: (190rem/ 75);
-    }
-  }
-  #copyRight{
-    width:100%;
-    top: auto;
-    font-size: (18rem/75);
-    padding: (28rem/75);
   }
   #body{
     width: 100%;
     box-sizing: border-box;
-    padding: 0.5rem;
-    margin-left: 0;
-    margin-top: (80rem / 75);
     max-width: auto;
+    .container-content{
+      width: 100%;
+    }
+    .content{
+      float: none;
+      width: 100%;
+      margin: auto;
+      margin-bottom: (64rem / 75); 
+    }
+  }
+  #copyright{
+    font-size: (26rem / 75);
+    height:  (100rem / 75);
+    line-height: (100rem / 75);
+  }
+  #sub-nav{
+    float: none;
+    width: 100%;
+    .card{
+      display: none;
+    }
   }
 }
 

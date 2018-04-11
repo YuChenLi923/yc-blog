@@ -36,10 +36,10 @@ module.exports = warp({
     type: 'loading',
     redux: {
         mapStateToProps: (state) => {
-            let { getServerData, deviceChange } = state;
+            let { loadStatus, deviceChange } = state;
             return {
-                remind: getServerData.remind,
-                icon: getServerData.icon,
+                remind: loadStatus.remind,
+                icon: loadStatus.icon,
                 isMobile: deviceChange.isMobile
             };
         }

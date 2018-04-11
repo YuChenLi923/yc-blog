@@ -1,0 +1,52 @@
+#yc-admin-sort{
+  .sort-input-wrap{
+    margin-top: 15px;
+  }
+  .sort-input{
+    height: 25px;
+    padding: 0 10px;
+    float: left;
+    width: 200px;
+  }
+  .sort-add{
+    float: left;
+    margin-left: 20px;
+    height: 25px;
+    padding: 0 10px;
+  }
+  .sort-result{
+    font-size: 0;
+    margin-top: 20px;
+    margin-left: -20px;
+    max-width: 1000px;
+    .type{
+      background: #fff;
+      font-size: 16px;
+      padding: 0 10px;
+      cursor: default;
+      display: inline-block;
+      line-height: 25px;
+      padding-right: 5px;
+      margin-left: 20px;
+      margin-top: 10px;
+      input{
+        float: left;
+        height: 25px;
+        outline: none;
+        font-size: 16px;
+        width: 170px;
+      }
+      .delete{
+        float: left;
+        height: 25px;
+        width: 25px;
+        margin-left: 10px;
+        background-image: url('../../../imgs/common/delete.png');
+        background-repeat: no-repeat;
+        background-position: right 0;
+        background-size: 25px 25px;
+        cursor: pointer;
+      }
+    }
+  }
+}

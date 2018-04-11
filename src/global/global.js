@@ -36,7 +36,6 @@ module.exports = function (store) {
         return function () {
             let curTopDis = getScrollTopDis(),
                 bottomDis = getScrollBottomDis();
-            console.log(bottomDis, preBottomDis, bottomDis < 100 && preBottomDis >= 100);
             if (bottomDis < 50 && preBottomDis >= 50 && isMobile()) {
                 store.dispatch({
                     type: 'SCROLL_TO_DROP',
@@ -61,7 +60,6 @@ module.exports = function (store) {
     const menuOpenLisenerEvent = function (e) {
       const target = e.target,
           className = target.className;
-      console.log(className.indexOf('menu-switch-close') > -1, className, className === 'menu-switch', (className.indexOf('menu-switch-close') > -1) || className !== 'menu' || className === 'menu-switch');
       if ((className.indexOf('menu-switch-close') > -1) || className !== 'menu' || className === 'menu-switch') {
         store.dispatch({
           type: 'MENU_CLOSE'

@@ -1,86 +1,49 @@
 import React, {Component} from 'react';
 import warp from '../common/wrapCompontent';
 import Nav from '../common/Nav-router';
-import {clickMenuSwitch} from '../../redux/action/action';
-import AboutMe from '../../components/pages/aboutme';
-import {myselfInfo} from '../../../config/blog';
+import Container from '../common/Container';
+import {touchMenuSwitch} from '../../redux/action/action';
+import {title, subTitle} from '../../../config/blog';
 class AppNav extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showMenu: false,
-            showAboutMe: false
-        };
+    clickSwitch() {
+        this.props.touchMenuSwitch(!this.props.open);
     }
-    showAboutMe() {
-      this.setState({
-        showAboutMe: true
-      });
-    }
-    closeAboutMe() {
-      this.setState({
-        showAboutMe: false
-      });
+    closeMenu() {
+        if (this.props.isMobile) {
+            this.props.touchMenuSwitch(false);
+        }
     }
     render() {
         let {
             isMobile = null,
             leftNavList,
-            otherPlatform,
             index,
             open,
-            clickMenuSwitch,
             getClassName
         } = this.props;
-        let { showAboutMe } = this.state;
         return (
-            <div id="Nav"
-                 className={getClassName({'open-nav': isMobile && open})}
-            >
+            <Container id="Nav">
+               <p className='blog-title'>
+                 {title}
+               </p>
+              <p className='blog-sub-title'>
+                {subTitle}
+              </p>
               {
-                isMobile === false &&
-                <div className="head-portrait"
-                     onMouseEnter = {this.showAboutMe.bind(this)}
-                     onMouseLeave = {this.closeAboutMe.bind(this)}
-                >
-                  {do {
-                    if (showAboutMe && !isMobile) {
-                      <AboutMe/>;
-                    }
-                  }}
-                </div>
+                (open || !isMobile) &&
+                <div className='menu'>
+                  <Nav click = {this.closeMenu.bind(this)} items = {leftNavList} index={index} className="nav-list" horizontal = {!isMobile} SPA/>
+                 </div>
               }
               {
                 isMobile &&
-                <div className={getClassName('menu-switch', {'menu-switch-close': open})}
-                     onClick={() => clickMenuSwitch(!open) }>
-                  <i/>
+                <div onClick={this.clickSwitch.bind(this)} className={getClassName('menu-toggle', open ? 'menu-toggle-open' : '')}>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </div>
-              }
-               <p className='blog-title' onClick={() => clickMenuSwitch(false) }>{myselfInfo.name + '的博客'}</p>
-                <div className='menu' style={open && isMobile ? {left: 0} : {}}>
-                  {
-                    isMobile &&
-                    <div className="head-portrait" />
-                  }
-                  <Nav click={() => clickMenuSwitch(false) }
-                                 items = {leftNavList}
-                                 index={index}
-                                 className="NavList"
-                                 SPA
-                      />
-                      <Nav className='otherPlatform'
-                           items = {otherPlatform}
-                           horizontal
-                                 disabled
-                      />
-                      <p id="copyRight">
-                        <span>{'COPYRIGHT   ' + myselfInfo.name}</span>
-                        <br/>
-                        <span> ALL RIGHTS RESERVED</span>
-                      </p>
-                </div>
-            </div>
+             }
+            </Container>
         );
     }
 }
@@ -88,13 +51,13 @@ module.exports = warp({
     Target: AppNav,
     type: 'App-Nav',
     redux: {
+        mapDispatchToProps: {touchMenuSwitch},
         mapStateToProps: (state) => {
             let { deviceChange, menuSwitch } = state;
             return {
-                isMobile: deviceChange.isMobile,
-                open: menuSwitch.open
+                open: menuSwitch.open,
+                isMobile: deviceChange.isMobile
             };
-        },
-        mapDispatchToProps: {clickMenuSwitch}
+        }
     }
 });

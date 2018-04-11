@@ -6,7 +6,7 @@
  *      horizontal 布尔值,是否为水平导航栏,默认为false
  *      disabled 布尔值，是否禁止导航栏，禁止后，将不会触发回到函数以及改变index,但仍可以通过url跳转
  *      items 数组[[item],[item]]
- *            item: name 字符串，导航栏子级块的名称
+ *            item: value 字符串，导航栏子级块的名称
  *                  pic 字符串,图片路径
  *                  url 字符串,跳转的链接
  *                  target 字符串,跳转的方式

@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
-import CardWarper from '../components/common/CardWarper';
-import PageTurn from '../components/common/PageTurn';
-import ArticleCard from '../components/pages/ArticleCard';
-import warp from '../components/common/wrapCompontent';
-import Loading from '../components/common/Loading';
-import {postSeverData, cleartGetData} from '../redux/action/action';
-import '../assets/scss/pages/eassy.scss';
-import { shareType } from '../../config/blog';
-let navItems = [];
-shareType.forEach((value) => { navItems.push({value: value}); });
+import CardWarper from '../../components/common/CardWarper';
+import PageTurn from '../../components/common/PageTurn';
+import ArticleCard from '../../components/pages/ArticleCard';
+import warp from '../../components/common/wrapCompontent';
+import Loading from '../../components/common/Loading';
+import {postSeverData, cleartGetData} from '../../redux/action/action';
+import '../../assets/scss/pages/client/eassy.scss';
 class Essay extends Component {
     constructor(props) {
         super(props);

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import warp from '../components/common/wrapCompontent';
-import {postSeverData} from '../redux/action/action';
+import warp from '../../components/common/wrapCompontent';
+import {postSeverData} from '../../redux/action/action';
 class ResourceAdmin extends Component {
   render() {
     return (

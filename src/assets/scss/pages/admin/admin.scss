@@ -34,19 +34,14 @@
       margin-top: 10px;
       border: 1px solid #f8f8f8;
     }
-    .selected{
-      color: #337ab7;
-      border: 1px solid #337ab7;
-    }
-  }
-  .yc-ui-nav{
     a{
       color: #333;
     }
-    .selected {
+    .selected{
       a{
-        color: white;
+        color: #337ab7;
       }
+      border: 1px solid #337ab7;
     }
   }
   .admin-content-title{

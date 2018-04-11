@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import PageTurn from '../components/common/PageTurn';
-import warp from '../components/common/wrapCompontent';
-import {postSeverData} from '../redux/action/action';
-import '../assets/scss/pages/search.scss';
-import CardWarper from '../components/common/CardWarper';
-import Loading from '../components/common/Loading';
-import ArticleCard from '../components/pages/ArticleCard';
+import PageTurn from '../../components/common/PageTurn';
+import warp from '../../components/common/wrapCompontent';
+import {getSearchResult} from '../../redux/action/action';
+import '../../assets/scss/pages/client/search.scss';
+import CardWarper from '../../components/common/CardWarper';
+import Loading from '../../components/common/Loading';
+import ArticleCard from '../../components/pages/ArticleCard';
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -14,15 +14,9 @@ class Search extends Component {
     };
   }
   _search() {
-    const searchContent = this.input.value,
-          postSeverData = this.props.postSeverData;
+    const searchContent = this.input.value;
     if (searchContent) {
-      postSeverData({
-        url: 'yc/search',
-        data: {
-          text: searchContent
-        }
-      });
+      this.props.getSearchResult(searchContent);
     }
   }
   render() {
@@ -33,7 +27,7 @@ class Search extends Component {
       <div id="search">
         <h1 className='title'>文章搜索</h1>
         <div className='search-input'>
-          <input placeholder="文章名称、文章标签、类型"
+          <input placeholder="文章标题"
                  onKeyPress={(e) => { e.charCode === 13 && this._search(); } }
                  ref = { (input) => { this.input = input; } }
           />
@@ -46,7 +40,10 @@ class Search extends Component {
             data = {data.list}
             template={ArticleCard}
           />
-          <PageTurn url="/essay" index={index} sum={data.sum} />
+          {
+            data.sum > 1 &&
+            <PageTurn url="/essay" index={index} sum={data.sum} />
+          }
         </Loading>
       </div>
     );
@@ -55,11 +52,11 @@ class Search extends Component {
 module.exports = warp({
   Target: Search,
   redux: {
-    mapDispatchToProps: {postSeverData},
+    mapDispatchToProps: {getSearchResult},
     mapStateToProps: (state) => {
-      let {getServerData} = state;
+      let {articleListData} = state;
       return {
-        data: getServerData.data
+        data: articleListData.data
       };
     }
   }

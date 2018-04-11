@@ -1,28 +1,24 @@
 @import "../common/mobile";
 .articleCard{
   background: #fff;
-  padding: 10px;
+  padding: 30px;
   border-radius: 5px;
   box-sizing: border-box;
-  cursor: pointer;
-  border-bottom: 1px dashed #666;
+  margin-bottom: 25px;
   .title{
     overflow: hidden;
     display: block;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 32px;
     margin-top: 10px;
     line-height: 1.2;
-    float: left;
     word-break: break-all;
   }
   .subtitle{
     font-size: 14px;
     color: #666;
     height: 40px;
-    text-align: center;
     margin-top: 10px;
-    float: right;
     p{
       line-height: 40px;
       background-size: 16px 16px;
@@ -48,12 +44,33 @@
     white-space: pre-wrap;
     text-align: justify;
     word-break: break-all;
-    text-indent: 2ch;
+    color: #252525;
   }
-  .type{
-    color: #337ab7;
-    text-align: right;
-    font-size: 14px;
+  .read{
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 3px;
+    background-color: #ff6663;
+  }
+  .tags {
+    overflow: hidden;
+    margin-top: 20px;
+    padding-left: 30px;
+    background-image: url("../../../assets/imgs/components/tag.png");
+    background-size: 20px 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    li{
+      float: left;
+      line-height: 20px;
+      color: #337ab7;
+      font-size: 16px;
+      margin-right: 10px;
+    }
   }
 }
 @include moblie {
@@ -87,8 +104,23 @@
         background-position: 0 (4rem/75);
       }
     }
-    .type{
-      font-size: (24rem / 75);
+    .tags {
+      margin-top: (40rem/75);
+      padding-left: (60rem/75);
+      background-size: (40rem/75) (40rem/75);
+      height: (40rem/75);
+      li{
+        font-size: (32rem/75);
+        line-height:  (40rem/75);
+        margin-right: (20rem/75);
+      }
+    }
+    .read{
+      width: (240rem/75);
+      height: (60rem/75);
+      line-height: (60rem/75);
+      font-size: (32rem/75);
+      border-radius: (6rem/75);
     }
   }
 }

@@ -90,7 +90,7 @@ class PT extends Component {
         return (
             <div className={getClassName(prefix + type, className)}>
                 {sum > 1 && !isMobile &&
-                    <div className="container">
+                    <div className={prefix + type + '-container'}>
                         {index > 1 &&
                         <span className="btn last">
                           <Link to={{

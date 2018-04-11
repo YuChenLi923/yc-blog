@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import '../assets/scss/common/common.scss';
 import '../assets/scss/pages/app.scss';
 import AppNav from '../components/pages/App-Nav';
+import SubNav from '../components/pages/Sub-Nav';
 import FloatCards from '../components/common/FloatCards';
 import {clickMenuSwitch} from '../redux/action/action';
 import warp from '../components/common/wrapCompontent';
+import Container from '../components/common/Container';
 import config from '../../config/blog';
 let {
     leftNavList,
@@ -43,12 +45,25 @@ function clickFloat(name) {
     }
 }
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            contentMinH: 0
+        };
+    }
     componentWillMount() {
       document.documentElement.setAttribute('type', 'fe');
+    }
+    componentDidMount() {
+        let contentMinH = Math.min(document.documentElement.scrollHeight, document.documentElement.clientHeight) - document.getElementById('Nav').offsetHeight;
+        this.setState({
+            contentMinH: contentMinH > 0 ? contentMinH : 0
+        });
     }
     render() {
        let path = this.props.location.pathname,
            { isMobile, clickMenuSwitch, open } = this.props,
+           {contentMinH} = this.state,
            index = routerURL[path],
            NavProps = {
             myselfInfo,
@@ -58,12 +73,21 @@ class App extends Component {
             index
           };
       return (
-            <div className="container">
-                <AppNav {...NavProps}/>
-                <div id="body"
-                     onClick={() => clickMenuSwitch(false)}
+            <div>
+                <AppNav {...NavProps} ref={(elem) => { this.nav = elem; }}/>
+                <Container id="body"
+                           onClick={() => clickMenuSwitch(false)}
                 >
+                  <div className= 'content' style={{minHeight: contentMinH}}>
                     {this.props.children}
+                  </div>
+                  {
+                    !isMobile &&
+                    <SubNav location = {this.props.location}/>
+                  }
+                </Container>
+                <div id="copyright">
+                  COPYRIGHT © 2018 宇宸 ALL RIGHTS RESERVED
                 </div>
                 <FloatCards items={ floatCards }/>
             </div>

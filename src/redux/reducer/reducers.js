@@ -13,11 +13,12 @@ import {
     SERVER_TIMEOUT,
     GET_SERVER_NO_DATA,
     GET_SERVER_MOBILE_DATA,
-    GET_SERVER_MOBILE_NO_DATA,
     GET_SERVER_MOBILE_ALL_DATA,
     MENU_OPEN,
     MENU_CLOSE,
-    CLEAN_SERVER_DATA
+    CLEAN_SERVER_DATA,
+    GET_ARTICLE_DATA,
+    GET_ARTICLE_LIST_DATA
 } from '../type';
 import assign from '../../utils/yc-assign';
 import {isMobile} from '../../utils/yc-mobile';
@@ -55,63 +56,72 @@ function deviceChange(state = { isMobile: isMobile() }, action = {}) {
     }
 }
 
-function getServerData(state = {}, action = {}) {
-    switch (action.type) {
-        case GET_SERVER_MOBILE_ALL_DATA:
-            return assign({}, state, {
-                remind: '已经拉到最下面啦',
-                icon: 'get-all-data'
-            });
-        case GET_SERVER_MOBILE_DATA:
-            let preData = state.data,
-                curData = action.data;
-            if (preData && preData.list) {
-              if (curData.page === 1) {
-                state.data.list = preData.list = [];
-              }
-                curData.list = curData.list.concat(preData.list);
-            }
-            return assign({}, state, {
-                data: curData,
-                remind: ''
-            });
-        case GET_SERVER_MOBILE_NO_DATA:
-        case GET_SERVER_NO_DATA:
-            return assign({}, state, {
-                remind: '不存在相关数据',
-                icon: 'no-data',
-                data: null
-            });
-        case GET_SERVER_DATA:
-            return assign({}, state, {
-                data: action.data,
-                remind: ''
-            });
-        case LOADING_SERVER_DATA:
-            return assign({}, state, {
-                remind: '正在加载...',
-                icon: 'loading'
-            });
-        case SERVER_FAIL:
-            return assign({}, state, {
-                remind: '服务器发生错误',
-                icon: 'server-error'
-            });
-        case SERVER_TIMEOUT:
-            return assign({}, state, {
-                remind: '宇宸的垃圾服务器太忙啦- -',
-                icon: 'timeout'
-            });
-      case CLEAN_SERVER_DATA:
-        return assign({}, state, {
-          remind: '',
-          data: null
-        });
-        default:
-            return state;
-    }
+// loading状态
+
+function loadStatus(state = {}, action = {}) {
+  switch (action.type) {
+    case GET_SERVER_MOBILE_ALL_DATA:
+      return assign({}, state, {
+        remind: '已经拉到最下面啦',
+        icon: 'get-all-data'
+      });
+    case GET_SERVER_NO_DATA:
+      return assign({}, state, {
+        remind: '不存在相关数据',
+        icon: 'no-data'
+      });
+    case GET_SERVER_MOBILE_DATA:
+    case GET_SERVER_DATA:
+      return assign({}, state, {
+        remind: '',
+        icon: ''
+      });
+    case LOADING_SERVER_DATA:
+      return assign({}, state, {
+        remind: '正在加载...',
+        icon: 'loading'
+      });
+    case SERVER_FAIL:
+      return assign({}, state, {
+        remind: '服务器发生错误',
+        icon: 'server-error'
+      });
+    case SERVER_TIMEOUT:
+      return assign({}, state, {
+        remind: '宇宸的垃圾服务器太忙啦- -',
+        icon: 'timeout'
+      });
+    default:
+      return state;
+  }
 }
 
+// 文章列表的数据
+function articleListData(state = {}, action = {}) {
+ switch (action.type) {
+   case CLEAN_SERVER_DATA:
+      return assign({}, state, {
+        data: undefined
+      });
+   case GET_ARTICLE_LIST_DATA:
+     return assign({}, state, {
+       data: action.data
+     });
+   default:
+     return state;
+ }
+}
+// 文章内容数据
+function articleData(state = {}, action = {}) {
+  switch (action.type) {
+    case GET_ARTICLE_DATA:
+      return assign({}, state, {
+        data: action.data
+      });
+    default:
+      return state;
+  }
+}
 function menuSwitch(state = {open: false}, action) {
   switch (action.type) {
     case MENU_OPEN:
@@ -129,6 +139,8 @@ function menuSwitch(state = {open: false}, action) {
 module.exports = {
     scrollDS,
     deviceChange,
-    getServerData,
-    menuSwitch
+    loadStatus,
+    menuSwitch,
+    articleListData,
+    articleData
 };

@@ -1,0 +1,73 @@
+@import "../../common/mobile";
+#archives {
+    margin-top: -15px;
+    margin-bottom: 32px;
+    .archives-date{
+        font-size: 20px;
+        margin-top: 15px;
+    }
+    .archives-list{
+        font-size: 16px;
+        margin-top: 10px;
+        margin-left: 0px;
+        li{
+            overflow: hidden;
+        }
+    }
+    .archives-icon{
+        float: left;
+        .archives-circle{
+            width: 16px;
+            height: 16px;
+            background: #ff6663;
+            border-radius: 50%;
+        }
+        .archives-line{
+           height: 30px;
+           width: 2px;
+           background: #ff6663;
+           margin-left: 7px;   
+        }
+    }
+    .archives-title{
+        float: left;
+        margin-left: 15px;
+        line-height: 18px;
+        font-size: 18px;
+        cursor: pointer;
+        color: #333;
+        &:hover{
+            color: #ff6663;
+        }
+    }
+}
+@include moblie {
+    #archives {
+        margin-left: (30rem / 75);
+        margin-right: (30rem / 75);
+        margin-top: (-30rem / 75);
+        .archives-date{
+            font-size: (40rem / 75);
+            margin-top: (30rem / 75);
+        }
+        .archives-list{
+            margin-top: (20rem / 75);
+        }
+        .archives-icon{
+            .archives-circle{
+                width: (32rem / 75);
+                height: (32rem / 75);
+            }
+            .archives-line{
+               height: (60rem / 75);
+               width: (4rem / 75);
+               margin-left: (14rem / 75);
+            }
+        }
+        .archives-title{
+            margin-left: (30rem / 75);
+            line-height: (36rem / 75);
+            font-size: (36rem / 75);
+        }
+    }  
+}
