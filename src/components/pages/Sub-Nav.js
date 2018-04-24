@@ -12,7 +12,11 @@ class SubNav extends Component {
     };
   }
   componentWillMount() {
-    ajax.get('yc/getTypes').send().then(({data: result}) => {
+    ajax.get('yc/getTypes', {
+      query: {
+        limit: 5
+      }
+    }).send().then(({data: result}) => {
       let {data: types} = result;
       types.forEach((item, index) => {
         types[index] = {
@@ -24,7 +28,11 @@ class SubNav extends Component {
         types
       });
     });
-    ajax.get('yc/getArticleYearMonth').send().then(({data: result}) => {
+    ajax.get('yc/getArticleYearMonth', {
+      query: {
+        limit: 5
+      }
+    }).send().then(({data: result}) => {
       let {data: yearMonths} = result;
       yearMonths.forEach((item, index) => {
         yearMonths[index] = {

@@ -7,6 +7,7 @@ import FloatCards from '../components/common/FloatCards';
 import {clickMenuSwitch} from '../redux/action/action';
 import warp from '../components/common/wrapCompontent';
 import Container from '../components/common/Container';
+import LoadingPage from '../components/common/loading-page';
 import config from '../../config/blog';
 let {
     leftNavList,
@@ -18,7 +19,7 @@ let {
         name: '搜索',
         url: '/search',
         click: clickFloat,
-        isMobile: true
+        isMobile: false
     }, {
         name: '问题反馈',
         click: clickFloat,
@@ -83,11 +84,13 @@ class App extends Component {
                   </div>
                   {
                     !isMobile &&
-                    <SubNav location = {this.props.location}/>
+                    <SubNav location={this.props.location}/>
                   }
                 </Container>
                 <div id="copyright">
-                  COPYRIGHT © 2018 宇宸 ALL RIGHTS RESERVED
+                  <span>COPYRIGHT © 2018 宇宸 ALL RIGHTS RESERVED</span>
+                  <span className="sep">|</span>
+                  <a href="http://w蜀ICP备ww.miibeian.gov.cn/" className="record-card">蜀ICP备17027553号-1</a>
                 </div>
                 <FloatCards items={ floatCards }/>
             </div>

@@ -9,8 +9,9 @@ let scale = 1,
 function setCurRem() {
     let width,
         devicePixelRatio = win.devicePixelRatio,
-        rem;
-    if (devicePixelRatio) {
+        rem,
+        isMobileDevice = /Android|iPhone/.test(window.navigator.userAgent);
+    if (devicePixelRatio & isMobileDevice) {
         if (devicePixelRatio >= 3) {
             dpr = 3;
         } else if (devicePixelRatio >= 2) {

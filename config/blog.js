@@ -1,6 +1,6 @@
 module.exports = {
   devHost: 'http://localhost:8081/',
-  serverHost: 'http://123.207.150.18/',
+  serverHost: '/',
   rootPath: '/',
   title: '宇宸的博客',
   subTitle: '我不是一个伟大的前端工程师，我只是一个具有良好习惯的前端工程师',
