@@ -22,12 +22,12 @@ module.exports = {
     plugins: [
       new webpack.optimize.ModuleConcatenationPlugin(),
       new webpack.DllReferencePlugin({
-        manifest: require('../dist/js/common/manifest.json')
+        manifest: require('../dll/manifest.json')
       }),
       new AddAssetHtmlPlugin({
-        filepath: require.resolve('../dist/js/common/lib.js'),
+        filepath: require.resolve('../dll/lib.js'),
         outputPath: '../dist/js/common',
-        publicPath: 'js/common',
+        publicPath: '/js/common',
         includeSourcemap: false
       }),
       new HappyPack({

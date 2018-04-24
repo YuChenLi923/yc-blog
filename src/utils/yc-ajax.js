@@ -14,8 +14,9 @@ const baseConfig = {
       return result;
     }
   },
-  host: serverHost
+  host: process.env.HOT_ENV ? devHost : serverHost
 };
+console.log(process.env);
 eAjax.config(baseConfig);
 let ajaxStack = [],
     preHref = '';

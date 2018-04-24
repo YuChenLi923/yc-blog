@@ -1,6 +1,6 @@
 const webpack = require('webpack'),
       os = require('os'),
-      { rootPath } = require('../config/path'),
+      { rootPath, outPath } = require('../config/path'),
       merge = require('webpack-merge'),
       HtmlWebpackPlugin = require('html-webpack-plugin'),
       webpackBaseConfig = require('./webpack.base.config'),
@@ -47,7 +47,8 @@ module.exports = merge(webpackBaseConfig, {
               removeComments:true,    //移除HTML中的注释
               collapseWhitespace:true    //删除空白符与换行符
           }
-      })
+      }),
+      new CleanWebpackPlugin([outPath])
   ],
   module: {
     rules: [

@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const outputPath = path.join(__dirname, '../dist/js/common');
+const outputPath = path.join(__dirname, '../dll');
 const fileName = '[name].js';
 const libs = [
   'react',
