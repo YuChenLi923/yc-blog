@@ -22,16 +22,10 @@ const plugin = [
 plugin.push(
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production')
-  }),
-  new webpack.optimize.UglifyJsPlugin({
-      mangle: {
-        except: ['$', 'exports', 'require']
-      },
-      compress: { warnings: false },
-      output: { comments: false }
-    })
+  })
 );
 module.exports = {
+  mode: 'production',
   devtool: 'source-map',
   entry: {
     lib: libs
@@ -42,6 +36,9 @@ module.exports = {
     library: '[name]',
     libraryTarget: 'umd',
     umdNamedDefine: true
+  },
+  optimization: {
+    minimize: true
   },
   plugins: plugin
 };

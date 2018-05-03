@@ -1,6 +1,4 @@
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin'),
-      path = require('path'),
-      HappyPack = require('happypack'),
+const HappyPack = require('happypack'),
       os = require('os'),
       happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length}),
       webpack = require('webpack'),
@@ -23,12 +21,6 @@ module.exports = {
       new webpack.optimize.ModuleConcatenationPlugin(),
       new webpack.DllReferencePlugin({
         manifest: require('../dll/manifest.json')
-      }),
-      new AddAssetHtmlPlugin({
-        filepath: require.resolve('../dll/lib.js'),
-        outputPath: '../dist/js/common',
-        publicPath: '/js/common',
-        includeSourcemap: false
       }),
       new HappyPack({
         id: 'js',

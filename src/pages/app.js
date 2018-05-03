@@ -90,7 +90,7 @@ class App extends Component {
                 <div id="copyright">
                   <span>COPYRIGHT © 2018 宇宸 ALL RIGHTS RESERVED</span>
                   <span className="sep">|</span>
-                  <a href="http://w蜀ICP备ww.miibeian.gov.cn/" className="record-card">蜀ICP备17027553号-1</a>
+                  <a href="http://www.miibeian.gov.cn/" className="record-card" target="_blank">蜀ICP备17027553号-1</a>
                 </div>
                 <FloatCards items={ floatCards }/>
             </div>

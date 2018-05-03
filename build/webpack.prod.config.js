@@ -2,6 +2,7 @@ const webpack = require('webpack'),
       os = require('os'),
       { rootPath, outPath } = require('../config/path'),
       merge = require('webpack-merge'),
+      AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin'),
       HtmlWebpackPlugin = require('html-webpack-plugin'),
       webpackBaseConfig = require('./webpack.base.config'),
       ExtractTextPlugin = require('extract-text-webpack-plugin'),
@@ -9,25 +10,19 @@ const webpack = require('webpack'),
 // 设置编译好了的css文件路径
 
 function setCSS(getPath){
-    return getPath('css/[name].[contenthash].css').replace('css/js/pages', 'css');
+    return getPath('css/[name].[md5:contenthash:hex:20].css').replace('css/js/pages', 'css');
 }
 
 module.exports = merge(webpackBaseConfig, {
+  mode: 'production',
+  optimization: {
+    minimize: true
+  },
   plugins: [
       new webpack.LoaderOptionsPlugin({ // 压缩css文件
-          minimize: true
+          minimize: true,
+          options: {}
       }),
-     new webpack.optimize.UglifyJsPlugin({
-         workers: os.cpus().length,
-         compress: {
-             warnings: false,
-             drop_debugger: true,
-             drop_console: true
-         },
-         output:{
-             comments:false
-         }
-     }),
       new webpack.DefinePlugin({
             'process.env':{
                 'NODE_ENV': JSON.stringify('production')
@@ -47,6 +42,12 @@ module.exports = merge(webpackBaseConfig, {
               removeComments:true,    //移除HTML中的注释
               collapseWhitespace:true    //删除空白符与换行符
           }
+      }),
+      new AddAssetHtmlPlugin({
+        filepath: require.resolve('../dll/lib.js'),
+        outputPath: '../dist/js/common',
+        publicPath: '/js/common',
+        includeSourcemap: false
       }),
       new CleanWebpackPlugin([outPath])
   ],

@@ -7,14 +7,14 @@ class ArticleCard extends Component {
         return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState));
     }
     render() {
-        let { title, time, type, description, id, view } = this.props;
+        let { title, time, type, description, id } = this.props;
         return (
           <div className = "articleCard">
             <div className = "header clear-float">
               <h className = "title" title={ title }>{title}</h>
               <div className="subtitle clear-float" >
                 <p className="time">{time}</p>
-                <p className="view">{view}</p>
+                {/* <p className="view">{view}</p> */}
               </div>
             </div>
             <p className="desc">
