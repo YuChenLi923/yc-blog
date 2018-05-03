@@ -24,12 +24,6 @@ module.exports = {
       new webpack.DllReferencePlugin({
         manifest: require('../dll/manifest.json')
       }),
-      new AddAssetHtmlPlugin({
-        filepath: require.resolve('../dll/lib.js'),
-        outputPath: '../dist/js/common',
-        publicPath: '/js/common',
-        includeSourcemap: false
-      }),
       new HappyPack({
         id: 'js',
         threadPool: happyThreadPool,

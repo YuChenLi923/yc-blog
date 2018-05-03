@@ -5,6 +5,7 @@ const fileName = '[name].js';
 const libs = [
   'react',
   'react-dom',
+  'react-dom',
   'react-router',
   'redux-thunk',
   'immutable',
