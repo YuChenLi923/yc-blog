@@ -2,5 +2,6 @@ module.exports = {
   host: '',
   user: '',
   pass: '',
-  remotePath: ''
+  remotePath: '',
+  clearDestination: true
 };

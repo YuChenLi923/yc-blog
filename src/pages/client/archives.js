@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import '../../assets/scss/pages/client/archives.scss';
 import warp from '../../components/common/wrapCompontent';
 import { Link } from 'react-router';
-import ajax from '../../utils/yc-ajax';
-
+import Loading from '../../components/common/Loading';
+import { getArchives } from '../../redux/action/action';
 class Archives extends Component {
     constructor(props) {
         super(props);
@@ -43,24 +43,21 @@ class Archives extends Component {
         return result;
     }
     componentWillMount() {
-        ajax.get('yc/getArchives').send().then(({data: result}) => {
-            if (result.status === 100) {
-                this.setState({
-                    archives: result.date
-                });
-            } else {
-                alert(result.msg);
-            }
-        });
+       this.props.getArchives(this);
     }
     render() {
         return (
             <div id="archives">
+              <Loading>
                 {this.create()}
+              </Loading>
             </div>
         );
     }
 }
 module.exports = warp({
-    Target: Archives
+    Target: Archives,
+    redux: {
+      mapDispatchToProps: {getArchives}
+    }
 });

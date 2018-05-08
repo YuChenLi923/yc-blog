@@ -1,5 +1,6 @@
 import eAjax from 'extend-ajax';
 import {devHost, serverHost} from '../../config/blog';
+console.log(process.env, 11111111111);
 const baseConfig = {
   async: true,
   header: {

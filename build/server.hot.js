@@ -1,7 +1,7 @@
 const webpack = require('webpack'),
   express = require('express'),
   opn = require('opn'),
-  config = require('./webpack.prod.config'),
+  config = require('./webpack.dev.config'),
   app = express(),
   compiler = webpack(config),
   path = require('path'),

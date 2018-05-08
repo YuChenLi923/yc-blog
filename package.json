@@ -1,6 +1,6 @@
 {
   "name": "YCBlog",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "宇宸个人的博客前端模版",
   "main": "index.js",
   "scripts": {

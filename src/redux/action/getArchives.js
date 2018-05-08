@@ -4,21 +4,17 @@ import {
   SERVER_TIMEOUT,
   SERVER_FAIL,
   GET_SERVER_NO_DATA,
-  GET_SERVER_MOBILE_NO_DATA,
-  GET_SERVER_DATA,
-  GET_SERVER_MOBILE_ALL_DATA,
-  GET_ARTICLE_LIST_DATA
+  GET_SERVER_DATA
 } from '../type/index';
-module.exports = function () {
+module.exports = function (reactVM) {
   return (dispatch) => {
-    let ajax = eAjax.get('yc/getHomeArticleList');
+    let ajax = eAjax.get('yc/getArchives');
     ajax.on('success', (result) => {
-      let {data: {data, status}} = result;
+      let {data: {date, status}} = result;
       switch (status) {
         case 100:
-          dispatch({
-            type: GET_ARTICLE_LIST_DATA,
-            data: data.rencent
+          reactVM.setState({
+            archives: date
           });
           dispatch({type: GET_SERVER_DATA});
           break;
@@ -26,11 +22,6 @@ module.exports = function () {
         case 103:
           dispatch({
             type: GET_SERVER_NO_DATA
-          });
-          break;
-        case 104:
-          dispatch({
-            type: GET_SERVER_MOBILE_ALL_DATA
           });
           break;
         default:
