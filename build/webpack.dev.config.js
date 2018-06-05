@@ -31,7 +31,7 @@ module.exports = merge(webpackBaseConfig, {
             chunks:['js/pages/index', 'webpack']
         }),
         new AddAssetHtmlPlugin({
-          filepath: require.resolve('../dll/lib.js'),
+          filepath: require.resolve('../dll/vendor.dll.js'),
           outputPath: '../dist/js/common',
           publicPath: '/js/common',
           includeSourcemap: false

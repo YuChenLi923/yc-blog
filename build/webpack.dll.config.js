@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const outputPath = path.join(__dirname, '../dll');
-const fileName = '[name].js';
+const fileName = '[name].dll.js';
 const libs = [
   'react',
   'react-dom',
@@ -10,35 +10,24 @@ const libs = [
   'immutable',
   'react-redux'
 ];
-
-const plugin = [
-  new webpack.DllPlugin({
-    path: path.join(outputPath, 'manifest.json'),
-    name: '[name]',
-    context: __dirname
-  }),
-  new webpack.optimize.OccurrenceOrderPlugin()
-];
-plugin.push(
-  new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify('production')
-  })
-);
 module.exports = {
   mode: 'production',
   devtool: 'source-map',
   entry: {
-    lib: libs
+    vendor: libs
   },
   output: {
     path: outputPath,
     filename: fileName,
-    library: '[name]',
-    libraryTarget: 'umd',
-    umdNamedDefine: true
+    library: '[name]_library'
   },
   optimization: {
     minimize: true
   },
-  plugins: plugin
+  plugins: [
+    new webpack.DllPlugin({
+      path: path.join(outputPath, '[name]-manifest.json'),
+      name: '[name]_library'
+    })
+  ]
 };

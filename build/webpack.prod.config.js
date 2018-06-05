@@ -49,12 +49,12 @@ module.exports = merge(webpackBaseConfig, {
               collapseWhitespace:true
           }
       }),
-      new AddAssetHtmlPlugin({
-        filepath: require.resolve('../dll/lib.js'),
-        outputPath: '../dist/js/common',
-        publicPath: '/js/common',
-        includeSourcemap: false
-      })
+    new AddAssetHtmlPlugin({
+      filepath: require.resolve('../dll/vendor.dll.js'),
+      outputPath: '../dist/js/common',
+      publicPath: '/js/common',
+      includeSourcemap: false
+    }),
   ],
   module: {
     rules: [

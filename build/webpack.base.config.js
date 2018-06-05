@@ -20,7 +20,7 @@ module.exports = {
     plugins: [
       new webpack.optimize.ModuleConcatenationPlugin(),
       new webpack.DllReferencePlugin({
-        manifest: require('../dll/manifest.json')
+        manifest: require('../dll/vendor-manifest.json')
       }),
       new HappyPack({
         id: 'js',
